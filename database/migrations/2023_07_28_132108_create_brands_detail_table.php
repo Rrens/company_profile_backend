@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('brands_detail', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_brands')->nullable();
+            $table->foreign('id_brands')->references('id')->on('brands');
             $table->string('name');
-            $table->text('description');
             $table->string('phone');
-            $table->string('name_instagram');
-            $table->string('open_outlet');
-            $table->string('close_outlet');
+            $table->string('instagram');
+            $table->string('open_outlet_day');
+            $table->string('close_outlet_day');
+            $table->string('open_outlet_time');
+            $table->string('close_outlet_time');
             $table->string('categories');
             $table->timestamps();
         });

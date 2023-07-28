@@ -15,4 +15,9 @@ class BrandsController extends Controller
         $page = 'brand_each';
         return view('page.brands.select_brand', compact('page'));
     }
+
+    public function brand_admin()
+    {
+        return view('admin.page.brand');
+    }
 }

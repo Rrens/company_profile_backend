@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ContactController;
@@ -25,10 +26,20 @@ Route::get('event', [EventController::class, 'index'])->name('event.index');
 Route::get('career', [CareerController::class, 'index'])->name('career.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 
-// Route::group(
-//     [
-//         'middleware' => ['auth']
-//     ],
-//     function () {
-//     }
-// );
+Route::group(
+    [
+        'prefix' => 'admin'
+    ],
+    function () {
+        Route::get('brand', [BrandsController::class, 'brand_admin'])->name('admin.brand.index');
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'auth',
+    ],
+    function () {
+        Route::get('login', [AuthController::class, 'login'])->name('login');
+    }
+);
