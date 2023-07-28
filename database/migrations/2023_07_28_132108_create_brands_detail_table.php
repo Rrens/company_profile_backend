@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('brands_detail', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->string('phone');
+            $table->string('name_instagram');
+            $table->string('open_outlet');
+            $table->string('close_outlet');
+            $table->string('categories');
             $table->timestamps();
         });
     }

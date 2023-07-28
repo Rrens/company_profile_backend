@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('brand', [BrandsController::class, 'index'])->name('brand.index');
+Route::get('brand/beer-garden', [BrandsController::class, 'select_brand'])->name('brand.select');
+Route::get('event', [EventController::class, 'index'])->name('event.index');
+Route::get('career', [CareerController::class, 'index'])->name('career.index');
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 
-Route::group(
-    [
-        'middleware' => ['auth']
-    ],
-    function () {
-    }
-);
+// Route::group(
+//     [
+//         'middleware' => ['auth']
+//     ],
+//     function () {
+//     }
+// );
