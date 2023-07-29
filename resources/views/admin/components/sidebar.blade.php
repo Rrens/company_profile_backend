@@ -41,12 +41,11 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title">Menu</li>
-
-                <li class="sidebar-item active">
-                    <a href="" class="sidebar-link">
+                <li class="sidebar-title">ADMIN</li>
+                <li class="sidebar-item {{ $active == 'brands' ? 'active' : '' }}">
+                    <a href="{{ route('admin.brand.index') }}" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
+                        <span>Brands</span>
                     </a>
                 </li>
             </ul>

@@ -33,6 +33,8 @@ Route::group(
     function () {
         Route::get('brand', [BrandsController::class, 'brand_admin'])->name('admin.brand.index');
         Route::post('brand', [BrandsController::class, 'store'])->name('admin.brand.post');
+        Route::get('brand/{id}', [BrandsController::class, 'edit'])->name('admin.brand.edit');
+        Route::post('brand/update', [BrandsController::class, 'update'])->name('admin.brand.update');
     }
 );
 

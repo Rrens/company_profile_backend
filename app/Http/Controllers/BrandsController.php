@@ -24,9 +24,11 @@ class BrandsController extends Controller
 
     public function brand_admin()
     {
+        $active = 'brands';
         $brand = Brands::all();
         $thumbnail = ImageHeaderBrand::all();
-        return view('admin.page.brand', compact('brand', 'thumbnail'));
+        $image = ImageGaleryBrand::all();
+        return view('admin.page.brand', compact('brand', 'thumbnail', 'image', 'active'));
     }
 
     public function store(Request $request)
@@ -79,7 +81,39 @@ class BrandsController extends Controller
         $photo_image->image = $image_name;
         $photo_image->save();
 
-        Alert::toast('Success', 'Successfully add outlet');
+        Alert::toast('Successfully Add Outlet', 'success');
         return back();
+    }
+
+    public function edit($id)
+    {
+        $active = 'brands';
+        $brand = Brands::findOrFail($id);
+        return view('admin.page.edit-brand', compact('active', 'brand'));
+    }
+
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'id' => 'required',
+            'description' => 'required',
+            'instagram' => 'required',
+            'open_outlet_day' => 'required',
+            'close_outlet_day' => 'required',
+            'open_outlet_time' => 'required',
+            'close_outlet_time' => 'required',
+            'phone' => 'required|min:8'
+        ]);
+
+        if ($validator->fails()) {
+            Alert::success('Failed', $validator->messages()->all());
+            return redirect()->route('admin.brand.index')->withInput();
+        }
+
+        $brand = Brands::findOrFail($request->id);
+        $brand->update($request->all());
+        Alert::toast('Successfully Update Outlet', 'success');
+        return redirect()->route('admin.brand.index');
     }
 }

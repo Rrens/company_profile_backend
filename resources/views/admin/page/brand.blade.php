@@ -21,21 +21,11 @@
                                 <div class="d-flex justify-content-end">
                                     <div class="btn-group mb-1">
                                         <div class="dropdown">
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                Atur Brands
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#modalTambahOutlet">
+                                                <i class="bi bi-plus"></i>
+                                                Tambah Produk
                                             </button>
-                                            <div class="dropdown-menu">
-                                                <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#modalTambahOutlet"><i class="bi bi-plus"></i>
-                                                    <span>Tambah Produk</span></button>
-                                                {{-- <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#modalEditProduk"><i class="bi bi-pencil"></i>
-                                                    <span>Edit Produk</span></button> --}}
-                                                <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#modalDeleteProduct"><i class="bi bi-trash"></i>
-                                                    <span>Hapus Produk</span></button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -47,7 +37,7 @@
                                             <div class="card">
                                                 <div class="card-content">
                                                     <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                        data-bs-target="#modalEditProduk">
+                                                        data-bs-target="#modalDetailOutlet{{ $item->id }}">
                                                         <img src="{{ empty($thumbnail->where('id_brand', $item->id)[0]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[0]->image) }}"
                                                             class="card-img-top img-fluid" alt=""
                                                             style="width: 350px; height: 200px">
@@ -70,53 +60,12 @@
     </div>
 
     {{-- MODAL TAMBAH Outlet --}}
-    <div class="modal fade" id="modalTambahCategory" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Category</h5>
-                </div>
-                <form action="" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group mb-3">
-                            <input type="text" hidden name="id_outlet" value="">
-                            <label for="basicInput">Nama Category</label>
-                            <input type="text" class="form-control mt-3" id="basicInput" name="name"value="">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="basicInput">Deskripsi</label>
-                            <input type="text" class="form-control mt-3" id="basicInput" name="description"
-                                value="">
-                        </div>
-                        {{-- <div class="form-group mb-3">
-                            <label for="basicInput">Upload Foto Category</label>
-                            <input class="form-control mt-2" type="file" name="image" id="formFile">
-                        </div> --}}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Close</span>
-                        </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Accept</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    {{-- MODAL TAMBAH Outlet --}}
     <div class="modal fade" id="modalTambahOutlet" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document" style="height: 110%;">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Produk</h5>
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Outlet</h5>
                 </div>
                 <form action="{{ route('admin.brand.post') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -256,10 +205,113 @@
             </div>
         </div>
     </div>
+
+    {{-- MODAL Detail Outlet --}}
+    @foreach ($brand as $item)
+        <div class="modal fade" id="modalDetailOutlet{{ $item->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document" style="height: 110%;">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <div class="flex-start">
+                            <h5 class="modal-title" id="exampleModalScrollableTitle">Detail Outlet</h5>
+                        </div>
+                        <div class="flex-end">
+                            <a class="btn btn-warning mr-3" href="{{ route('admin.brand.edit', $item->id) }}">Edit</a>
+                            <button class="btn btn-danger" href="#" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteOutlet{{ $item->id }}">Delete</button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Name</label>
+                            <input type="text" class="form-control mt-3" id="basicInput" value="{{ $item->name }}"
+                                readonly>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Thumbnail</label>
+                            <img src="{{ empty($thumbnail->where('id_brand', $item->id)[0]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[0]->image) }}"
+                                class="card-img-top img-fluid mt-3" alt="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Image</label>
+                            <img src="{{ empty($image->where('id_brand', $item->id)[0]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[0]->image) }}"
+                                class="card-img-top img-fluid mt-3" alt="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Description</label>
+                            <textarea class="form-control mt-3" style="color: black" readonly>{{ $item->description }}
+                            </textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Instagram</label>
+                            <input type="text" class="form-control mt-3" id="basicInput" readonly
+                                value="{{ $item->instagram }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tanggal</label>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-center">
+                                    <input type="button" value="{{ $item->open_outlet_day }}" readonly>
+                                    <input type="button" value="{{ $item->open_outlet_time }}" readonly>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <input type="button" value="{{ $item->close_outlet_day }}" readonly>
+                                    <input type="button" value="{{ $item->close_outlet_time }}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Phone</label>
+                            <input type="number" class="form-control mt-3" id="basicInput" value="{{ $item->phone }}"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Close</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                            <i class="bx bx-check d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Accept</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    @foreach ($brand as $item)
+        <div class="modal fade" id="modalDeleteOutlet{{ $item->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document" style="height: 110%;">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">Delete Outlet {{ $item->name }}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                                <i class="bx bx-x d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Close</span>
+                            </button>
+                            <a type="submit" class="btn btn-danger ml-1" href="#">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Delete</span>
+                            </a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+
+
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('admin/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
     <script src="{{ asset('admin/js/pages/ckeditor.js') }}"></script>
 @endpush
