@@ -15,6 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('phone');
+            $table->string('instagram');
+            $table->string('open_outlet_day');
+            $table->string('close_outlet_day');
+            $table->string('open_outlet_time');
+            $table->string('close_outlet_time');
             $table->timestamps();
         });
     }

@@ -32,6 +32,7 @@ Route::group(
     ],
     function () {
         Route::get('brand', [BrandsController::class, 'brand_admin'])->name('admin.brand.index');
+        Route::post('brand', [BrandsController::class, 'store'])->name('admin.brand.post');
     }
 );
 
@@ -41,5 +42,7 @@ Route::group(
     ],
     function () {
         Route::get('login', [AuthController::class, 'login'])->name('login');
+        Route::post('register', [AuthController::class, 'register'])->name('register');
+        Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     }
 );

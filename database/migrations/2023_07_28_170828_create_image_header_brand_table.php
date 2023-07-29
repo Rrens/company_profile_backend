@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('image_header_brand', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_brands')->nullable();
-            $table->foreign('id_brands')->references('id')->on('brands');
+            $table->unsignedBigInteger('id_brand')->nullable();
+            $table->foreign('id_brand')->references('id')->on('brands');
             $table->string('image');
             $table->timestamps();
         });

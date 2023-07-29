@@ -6,30 +6,7 @@
         <div class="d-flex justify-content-lg-between">
             <div class="col-lg-12 col-md-6">
                 <div class="flex-start">
-                    <h3>Produk Kantin</h3>
-                    <p>Pantau produk kantin dari sini</p>
-                </div>
-                <div class="flex-end">
-                    <div class="btn-group mb-1 mr-3">
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i class="bi bi-pencil"></i>
-                                Atur Category
-                            </button>
-                            <div class="dropdown-menu">
-                                <button class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#modalTambahCategory"><i class="bi bi-plus"></i>
-                                    <span>Tambah Category</span></button>
-                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditCategory"><i
-                                        class="bi bi-pencil"></i>
-                                    <span>Edit Category</span></button>
-                                <button class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#modalDeleteCategory"><i class="bi bi-trash"></i>
-                                    <span>Hapus Category</span></button>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Brands Management</h3>
                 </div>
             </div>
         </div>
@@ -38,35 +15,19 @@
         <section class="row">
             <div class="col-12 col-lg-12">
                 <div class="row">
-                    <div class="col-6 col-lg-4 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-4 py-4-5">
-                                <div class="row">
-                                    <h6 class="text-muted font-semibold">
-                                        OKEE
-                                    </h6>
-                                    <h6 class="font-extrabold mb-0">12222</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-12 col-xl-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Produk</h4>
-                                <div class="d-flex justify-content-lg-between">
-                                    <p>Produk yang dijual baik ready stok maupun out of stok</p>
+                                <div class="d-flex justify-content-end">
                                     <div class="btn-group mb-1">
                                         <div class="dropdown">
                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">
-                                                Atur Produk
+                                                Atur Brands
                                             </button>
                                             <div class="dropdown-menu">
                                                 <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#modalTambahProduk"><i class="bi bi-plus"></i>
+                                                    data-bs-target="#modalTambahOutlet"><i class="bi bi-plus"></i>
                                                     <span>Tambah Produk</span></button>
                                                 {{-- <button class="dropdown-item" href="#" data-bs-toggle="modal"
                                                     data-bs-target="#modalEditProduk"><i class="bi bi-pencil"></i>
@@ -81,27 +42,24 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <div class="card">
-                                            <div class="card-content">
-                                                <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#modalEditProduk">
-                                                    <img src="" class="card-img-top img-fluid" alt=""
-                                                        style="width: 350px; height: 200px">
-
-                                                    <div class="card-body">
-                                                        <h5 class="card-title"></h5>
-                                                        <p class="card-text">
-
-                                                        </p>
-                                                        <p class="card-text">
-                                                            Rp.
-                                                        </p>
-                                                    </div>
-                                                </button>
+                                    @foreach ($brand as $item)
+                                        <div class="col-lg-3 col-md-6 col-sm-12">
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <button class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#modalEditProduk">
+                                                        <img src="{{ empty($thumbnail->where('id_brand', $item->id)[0]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[0]->image) }}"
+                                                            class="card-img-top img-fluid" alt=""
+                                                            style="width: 350px; height: 200px">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{{ $item->name }}</h5>
+                                                            {!! $item->description !!}
+                                                        </div>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -111,7 +69,7 @@
         </section>
     </div>
 
-    {{-- MODAL TAMBAH Category --}}
+    {{-- MODAL TAMBAH Outlet --}}
     <div class="modal fade" id="modalTambahCategory" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -152,193 +110,136 @@
         </div>
     </div>
 
-    {{-- MODAL EDIT Category --}}
-    <div class="modal fade" id="modalEditCategory" tabindex="-1" role="dialog"
+    {{-- MODAL TAMBAH Outlet --}}
+    <div class="modal fade" id="modalTambahOutlet" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">Edit Kategori</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card-content">
-                                    <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                        data-bs-target="#modalEditDetailCategory">
-                                        <div class="card-body color-card">
-                                            <h5 class="card-title text-center mt-2"></h5>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Close</span>
-                    </button>
-                    <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Accept</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- MODAL EDIT DETAIL CATEGORY --}}
-    <div class="modal fade" id="modalEditDetailCategory" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">Edit Category</h5>
-                </div>
-                <form action="" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group mb-3">
-
-                            <input type="text" hidden name="id_outlet" value="">
-                            <input type="text" hidden name="id_category" value="">
-                            <label for="basicInput">Nama Category</label>
-                            <input type="text" class="form-control mt-3" id="basicInput"
-                                name="name"value="">
-                        </div>
-                        <p>Pilih Makanan dan Minuman</p>
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="custom-control custom-checkbox image-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="id_product[]"
-                                                    id="ck" value="">
-                                                <label class="custom-control-label" for="ck">
-                                                    <img src="" alt="#" class="img-fluid">
-                                                    <h5 class="mt-2"></h5>
-                                                    <p></p>
-                                                    <p>Rp.</p>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Close</span>
-                        </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Accept</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    {{-- MODAL HAPUS CATEGORY --}}
-    <div class="modal fade" id="modalDeleteCategory" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">HAPUS Category</h5>
-                </div>
-                <form action="" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body color-card">
-                                            <div class="custom-control custom-checkbox image-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="id_product_"
-                                                    id="ck" value="">
-                                                <label class="custom-control-label" for="ck">
-                                                    <h5 class="mt-2"></h5>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Close</span>
-                        </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Accept</span>
-                        </button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-
-    {{-- MODAL TAMBAH PRODUCT --}}
-    <div class="modal fade" id="modalTambahProduk" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document" style="height: 110%;">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document" style="height: 110%;">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
                     <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Produk</h5>
                 </div>
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.brand.post') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group mb-3">
-                            <label for="basicInput">Nama Produk</label>
+                            <label for="basicInput">Name</label>
                             <input type="text" class="form-control mt-3" id="basicInput" name="name"
-                                value="">
+                                value="{{ old('name') }}">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Deskripsi</label>
-                            <textarea type="text" class="form-control mt-3" id="basicInput" name="description"></textarea>
+                            <label for="basicInput">Thumbnail</label>
+                            <input type="file" class="form-control mt-3" id="basicInput" name="thumbnail"
+                                value="{{ old('thumbnail') }}">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Harga Jual</label>
-                            <input type="number" class="form-control mt-3" id="basicInput" name="original_price"
-                                value="">
+                            <label for="basicInput">Image</label>
+                            <input type="file" class="form-control mt-3" id="basicInput" name="image">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Harga Modal</label>
-                            <input type="number" class="form-control mt-3" id="basicInput" name="cost_price"
-                                value="">
+                            <label for="basicInput">Description</label>
+                            <textarea id="editor" style="color: black" name="description">{{ old('description') }}
+                            </textarea>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Diskon</label>
-                            <input type="number" class="form-control mt-3" id="basicInput" name="discount"
-                                value="">
+                            <label for="basicInput">Instagram</label>
+                            <input type="text" class="form-control mt-3" id="basicInput" name="instagram"
+                                value="{{ old('instagram') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tanggal</label>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-center">
+                                    <fieldset class="form-group">
+                                        <select class="form-select" id="basicSelect" name="open_outlet_day">
+                                            <option selected hidden>Pilih Hari Mulai</option>
+                                            <option value="sun">Sun</option>
+                                            <option value="mon">Mon</option>
+                                            <option value="tue">Tue</option>
+                                            <option value="wes">Wes</option>
+                                            <option value="thur">Thur</option>
+                                            <option value="fri">Fri</option>
+                                            <option value="sat">Sat</option>
+                                        </select>
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <select class="form-select" id="basicSelect" name="open_outlet_time">
+                                            <option selected hidden>Pilih Waktu Mulai</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <fieldset class="form-group">
+                                        <select class="form-select" id="basicSelect" name="close_outlet_day">
+                                            <option selected hidden>Pilih Hari Selesai</option>
+                                            <option value="sun">Sun</option>
+                                            <option value="mon">Mon</option>
+                                            <option value="tue">Tue</option>
+                                            <option value="wes">Wes</option>
+                                            <option value="thur">Thur</option>
+                                            <option value="fri">Fri</option>
+                                            <option value="sat">Sat</option>
+                                        </select>
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <select class="form-select" id="basicSelect" name="close_outlet_time">
+                                            <option selected hidden>Pilih Waktu Selesai</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Kategori</label>
-                            <select class="form-select" name="id_category">
-                                <option hidden>Pilih Salah satu kategori
-                                </option>
-                                <option value="" </option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="basicInput">Upload Foto Produk</label>
-                            <input class="form-control mt-2" type="file" name="image" id="formFile">
-                            <p class="text-muted mt-1">ukuran foto maksimal 2mb</p>
+                            <label for="basicInput">Phone</label>
+                            <input type="number" class="form-control mt-3" id="basicInput" name="phone"
+                                value="{{ old('phone') }}">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -355,13 +256,10 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 @endsection
 
 @push('scripts')
     <script src="{{ asset('admin/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script src="{{ asset('admin/js/pages/ckeditor.js') }}"></script>
 @endpush
