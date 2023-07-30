@@ -33,13 +33,17 @@
                             <div class="card-body">
                                 <div class="row">
                                     @foreach ($brand as $item)
+                                        @php
+                                            // dd($brand, $thumbnail);
+                                        @endphp
                                         <div class="col-lg-3 col-md-6 col-sm-12">
                                             <div class="card">
                                                 <div class="card-content">
                                                     <button class="dropdown-item" href="#" data-bs-toggle="modal"
                                                         data-bs-target="#modalDetailOutlet{{ $item->id }}">
-                                                        <img src="{{ empty($thumbnail->where('id_brand', $item->id)[0]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[0]->image) }}"
-                                                            class="card-img-top img-fluid" alt=""
+                                                        <img src="{{ empty($thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image) }}"
+                                                            class="card-img-top img-fluid"
+                                                            alt="{{ $thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image }}"
                                                             style="width: 350px; height: 200px">
                                                         <div class="card-body">
                                                             <h5 class="card-title">{{ $item->name }}</h5>
@@ -62,7 +66,7 @@
     {{-- MODAL TAMBAH Outlet --}}
     <div class="modal fade" id="modalTambahOutlet" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document" style="height: 110%;">
+        <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
                     <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Outlet</h5>
@@ -208,9 +212,13 @@
 
     {{-- MODAL Detail Outlet --}}
     @foreach ($brand as $item)
+        @php
+            // dd($loop->iteration);
+            // dd($thumbnail->where('id_brand', 2)[$loop->iteration]->image);
+        @endphp
         <div class="modal fade" id="modalDetailOutlet{{ $item->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document" style="height: 110%;">
+            <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
                         <div class="flex-start">
@@ -230,13 +238,16 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Thumbnail</label>
-                            <img src="{{ empty($thumbnail->where('id_brand', $item->id)[0]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[0]->image) }}"
-                                class="card-img-top img-fluid mt-3" alt="">
+                            <img src="{{ empty($thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image) }}"
+                                class="card-img-top img-fluid mt-3"
+                                alt="{{ $thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image }}">
+                            {{ empty($thumbnail[0]) ? '' : '' }}
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Image</label>
-                            <img src="{{ empty($image->where('id_brand', $item->id)[0]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[0]->image) }}"
-                                class="card-img-top img-fluid mt-3" alt="">
+                            <img src="{{ empty($image->where('id_brand', $item->id)[$loop->iteration - 1]->image) ? '-' : asset('storage/uploads/image/' . $image->where('id_brand', $item->id)[$loop->iteration - 1]->image) }}"
+                                class="card-img-top img-fluid mt-3"
+                                alt="{{ $image->where('id_brand', $item->id)[$loop->iteration - 1]->image }}">
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Description</label>
@@ -272,20 +283,17 @@
                             <i class="bx bx-x d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Close</span>
                         </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Accept</span>
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
     @endforeach
 
+    {{-- MODAL Delete Outlet --}}
     @foreach ($brand as $item)
         <div class="modal fade" id="modalDeleteOutlet{{ $item->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document" style="height: 110%;">
+            <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
                         <h5 class="modal-title" id="exampleModalScrollableTitle">Delete Outlet {{ $item->name }}</h5>
@@ -296,10 +304,14 @@
                                 <i class="bx bx-x d-block d-sm-none"></i>
                                 <span class="d-none d-sm-block">Close</span>
                             </button>
-                            <a type="submit" class="btn btn-danger ml-1" href="#">
-                                <i class="bx bx-check d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Delete</span>
-                            </a>
+                            <form action="{{ route('admin.brand.delete') }}" method="post">
+                                @csrf
+                                <input type="number" name="id" value="{{ $item->id }}" hidden>
+                                <button type="submit" class="btn btn-danger ml-1" href="#">
+                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Delete</span>
+                                </button>
+                            </form>
                         </center>
                     </div>
                 </div>

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('close_outlet_day');
             $table->string('open_outlet_time');
             $table->string('close_outlet_time');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

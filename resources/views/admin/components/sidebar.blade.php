@@ -48,6 +48,12 @@
                         <span>Brands</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ $active == 'galery' ? 'active' : '' }}">
+                    <a href="{{ route('admin.galeries.index') }}" class="sidebar-link">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Galeries</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,12 @@ Route::group(
         Route::post('brand', [BrandsController::class, 'store'])->name('admin.brand.post');
         Route::get('brand/{id}', [BrandsController::class, 'edit'])->name('admin.brand.edit');
         Route::post('brand/update', [BrandsController::class, 'update'])->name('admin.brand.update');
+        Route::post('brand/delete', [BrandsController::class, 'delete'])->name('admin.brand.delete');
+
+        Route::get('galeries', [GaleryController::class, 'index'])->name('admin.galeries.index');
+        Route::get('galeries/{name}', [GaleryController::class, 'filter_outlet'])->name('admin.galeries.filter');
+        Route::post('galeries', [GaleryController::class, 'store'])->name('admin.galeries.store');
+        Route::post('galeries/delete', [GaleryController::class, 'delete'])->name('admin.galeries.delete');
     }
 );
 

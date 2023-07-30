@@ -27,7 +27,11 @@ class BrandsController extends Controller
         $active = 'brands';
         $brand = Brands::all();
         $thumbnail = ImageHeaderBrand::all();
+        // dd($thumbnail->where('id_brand', 1));
         $image = ImageGaleryBrand::all();
+        // Brands::withTrashed()->restore();
+        // ImageHeaderBrand::withTrashed()->restore();
+        // ImageGaleryBrand::withTrashed()->restore();
         return view('admin.page.brand', compact('brand', 'thumbnail', 'image', 'active'));
     }
 
@@ -114,6 +118,29 @@ class BrandsController extends Controller
         $brand = Brands::findOrFail($request->id);
         $brand->update($request->all());
         Alert::toast('Successfully Update Outlet', 'success');
+        return redirect()->route('admin.brand.index');
+    }
+
+    public function delete(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            Alert::success('Failed', $validator->messages()->all());
+            return redirect()->route('admin.brand.index');
+        }
+
+        $image_galery_brand = ImageGaleryBrand::where('id_brand', $request->id)->first();
+        $image_header_brand = ImageHeaderBrand::where('id_brand', $request->id)->first();
+        $brand = Brands::findOrFail($request->id);
+
+        $image_galery_brand->delete();
+        $image_header_brand->delete();
+        $brand->delete();
+
+        Alert::toast('Successfully Delete Outlet', 'success');
         return redirect()->route('admin.brand.index');
     }
 }
