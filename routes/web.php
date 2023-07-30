@@ -6,6 +6,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,11 @@ Route::group(
         Route::get('galeries/{name}', [GaleryController::class, 'filter_outlet'])->name('admin.galeries.filter');
         Route::post('galeries', [GaleryController::class, 'store'])->name('admin.galeries.store');
         Route::post('galeries/delete', [GaleryController::class, 'delete'])->name('admin.galeries.delete');
+
+        Route::get('header', [HeaderController::class, 'index'])->name('admin.header.index');
+        Route::get('header/{name}', [HeaderController::class, 'filter_outlet'])->name('admin.header.filter');
+        Route::post('header', [HeaderController::class, 'store'])->name('admin.header.store');
+        Route::post('header/delete', [HeaderController::class, 'delete'])->name('admin.header.delete');
     }
 );
 

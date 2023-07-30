@@ -54,6 +54,12 @@
                         <span>Galeries</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ $active == 'header' ? 'active' : '' }}">
+                    <a href="{{ route('admin.header.index') }}" class="sidebar-link">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Header</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
