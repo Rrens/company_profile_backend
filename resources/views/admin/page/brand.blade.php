@@ -34,16 +34,16 @@
                                 <div class="row">
                                     @foreach ($brand as $item)
                                         @php
-                                            // dd($brand, $thumbnail);
+                                            // dd($item, $thumbnail->where('id_brand', $item->id)->first()['image']);
                                         @endphp
                                         <div class="col-lg-3 col-md-6 col-sm-12">
                                             <div class="card">
                                                 <div class="card-content">
                                                     <button class="dropdown-item" href="#" data-bs-toggle="modal"
                                                         data-bs-target="#modalDetailOutlet{{ $item->id }}">
-                                                        <img src="{{ empty($thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image) }}"
+                                                        <img src="{{ empty($thumbnail->where('id_brand', $item->id)->first()['image']) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)->first()['image']) }}"
                                                             class="card-img-top img-fluid"
-                                                            alt="{{ $thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image }}"
+                                                            alt="{{ $thumbnail->where('id_brand', $item->id)->first()['image'] }}"
                                                             style="width: 350px; height: 200px">
                                                         <div class="card-body">
                                                             <h5 class="card-title">{{ $item->name }}</h5>
@@ -212,10 +212,6 @@
 
     {{-- MODAL Detail Outlet --}}
     @foreach ($brand as $item)
-        @php
-            // dd($loop->iteration);
-            // dd($thumbnail->where('id_brand', 2)[$loop->iteration]->image);
-        @endphp
         <div class="modal fade" id="modalDetailOutlet{{ $item->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
@@ -238,16 +234,16 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Thumbnail</label>
-                            <img src="{{ empty($thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image) }}"
+                            <img src="{{ empty($thumbnail->where('id_brand', $item->id)->first()['image']) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)->first()['image']) }}"
                                 class="card-img-top img-fluid mt-3"
-                                alt="{{ $thumbnail->where('id_brand', $item->id)[$loop->iteration - 1]->image }}">
+                                alt="{{ $thumbnail->where('id_brand', $item->id)->first()['image'] }}">
                             {{ empty($thumbnail[0]) ? '' : '' }}
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Image</label>
-                            <img src="{{ empty($image->where('id_brand', $item->id)[$loop->iteration - 1]->image) ? '-' : asset('storage/uploads/image/' . $image->where('id_brand', $item->id)[$loop->iteration - 1]->image) }}"
+                            <img src="{{ empty($image->where('id_brand', $item->id)->first()['image']) ? '-' : asset('storage/uploads/image/' . $image->where('id_brand', $item->id)->first()['image']) }}"
                                 class="card-img-top img-fluid mt-3"
-                                alt="{{ $image->where('id_brand', $item->id)[$loop->iteration - 1]->image }}">
+                                alt="{{ $image->where('id_brand', $item->id)->first()['image'] }}">
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Description</label>

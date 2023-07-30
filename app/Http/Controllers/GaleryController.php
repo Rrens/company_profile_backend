@@ -30,7 +30,7 @@ class GaleryController extends Controller
         $for_data = $brand[0]->name;
         $brand_for_filter = Brands::all();
         $data = DB::table('image_galery_brand as img')
-            ->select(DB::raw('distinct(img.id)'), 'b.name', 'img.image')
+            ->select(DB::raw('distinct(img.id)'), 'b.name', 'img.image', 'b.id as id_brand')
             ->join('brands as b', 'b.id', '=', 'img.id_brand')
             ->where('b.name', $name)
             ->orderBy('img.created_at')
@@ -70,6 +70,13 @@ class GaleryController extends Controller
 
     public function delete(Request $request)
     {
+        // dd($request->all());
+        $check_image_for_brand = ImageGaleryBrand::where('id_brand', $request->id_brand)->count();
+        // dd($check_image_for_brand);
+        if ($check_image_for_brand <= 1) {
+            Alert::toast('Headers cannot be more than 1', 'error');
+            return back();
+        }
         $image_galery = ImageGaleryBrand::findOrFail($request->id);
         $image_galery->delete();
 

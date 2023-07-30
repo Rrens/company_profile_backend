@@ -37,10 +37,7 @@ class HeaderController extends Controller
             ->orderBy('img.created_at')
             ->get();
 
-        return view(
-            'admin.page.header.filter',
-            compact('data', 'brand', 'brand_for_filter', 'for_data', 'active')
-        );
+        return view('admin.page.header.filter', compact('data', 'brand', 'brand_for_filter', 'for_data', 'active'));
     }
 
     public function store(Request $request)
@@ -74,6 +71,12 @@ class HeaderController extends Controller
 
     public function delete(Request $request)
     {
+        $check_image_for_brand = ImageHeaderBrand::where('id_brand', $request->id_brand)->count();
+
+        if ($check_image_for_brand <= 1) {
+            Alert::toast('Headers cannot be more than 1', 'error');
+            return back();
+        }
         $image_galery = ImageHeaderBrand::findOrFail($request->id);
         $image_galery->delete();
 

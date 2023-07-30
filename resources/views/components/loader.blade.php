@@ -1,7 +1,7 @@
-<div class="loader_cover">
+{{-- <div class="loader_cover">
     <div id="lottie_container" class="lottie"></div>
     <canvas id="favicon" hidden width=32 height=32></canvas>
-</div>
+</div> --}}
 <div id="header_close" class="close_btn on_header"><span></span> <span></span></div>
 <div class="menu_wrapper boxhover">
     <div>

@@ -112,6 +112,7 @@
                             <form action="{{ route('admin.header.delete') }}" method="post">
                                 @csrf
                                 <input type="number" name="id" value="{{ $item->id }}" hidden>
+                                <input type="number" name="id_brand" value="{{ $item->id_brand }}" hidden>
                                 <button type="submit" class="btn btn-danger ml-1" href="#">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Delete</span>

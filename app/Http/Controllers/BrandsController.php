@@ -14,7 +14,7 @@ class BrandsController extends Controller
 {
     public function index()
     {
-        return view('page.brands.index', compact('brand', 'thumbnail'));
+        return view('page.brands.index');
     }
     public function select_brand()
     {
@@ -26,9 +26,9 @@ class BrandsController extends Controller
     {
         $active = 'brands';
         $brand = Brands::all();
-        $thumbnail = ImageHeaderBrand::all();
+        $thumbnail = ImageHeaderBrand::first();
         // dd($thumbnail->where('id_brand', 1));
-        $image = ImageGaleryBrand::all();
+        $image = ImageGaleryBrand::first();
         // Brands::withTrashed()->restore();
         // ImageHeaderBrand::withTrashed()->restore();
         // ImageGaleryBrand::withTrashed()->restore();

@@ -12,9 +12,6 @@
                     <img class="slider_img mobile"
                         src="https://biko-group.com/files/2021/12/27/61c9925ee902b42570355599.jpeg">
                 </div>
-
-                <!-- <div class="slider_each" color="black"><img class="slider_img" src="images/demo_asset/thumb_4.jpg"></div>
-                                <div class="slider_each" color="white"><img class="slider_img" src="images/demo_asset/thumb_2.jpg"></div> -->
             </div>
             <div class="slider_navs"></div>
         </section>
