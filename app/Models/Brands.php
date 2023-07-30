@@ -20,6 +20,7 @@ class Brands extends Model
         'description',
         'phone',
         'instagram',
+        'address',
         'open_outlet_day',
         'close_outlet_day',
         'open_outlet_time',

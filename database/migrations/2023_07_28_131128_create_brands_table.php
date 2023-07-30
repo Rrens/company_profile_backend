@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('phone');
             $table->string('instagram');
+            $table->text('address');
             $table->string('open_outlet_day');
             $table->string('close_outlet_day');
             $table->string('open_outlet_time');

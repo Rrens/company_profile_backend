@@ -31,6 +31,10 @@
             <input type="text" class="form-control mt-3" id="basicInput" name="instagram"
                 value="{{ $brand->instagram }}">
         </div>
+        <div class="form-group mb-3">
+            <label for="basicInput">Address</label>
+            <input type="text" class="form-control mt-3" id="basicInput" name="address" value="{{ $brand->address }}">
+        </div>
         <div class="form-group">
             <label for="">Tanggal</label>
             <div class="d-flex justify-content-between">

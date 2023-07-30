@@ -15,19 +15,14 @@
             <li><a href="{{ route('contact.index') }}">CONTACT</a>
             </li>
 
+            {{ $data }}
         </ul>
         <section class="brand_sliders white">
             <div class="bs_collapse_head">OUTLETS <img src="{{ asset('assets/img/icon/arrow_down.svg') }}"></div>
             <div class="brand_slider_wrapper dragscroll">
-                <a class="each_brand_slider" href="/beer-garden">BEER GARDEN</a>
-                <a class="each_brand_slider" href="beer-garden.html">FŪJIN</a>
-                <a class="each_brand_slider" href="beer-garden.html">PIPPO ITALIAN</a>
-                <a class="each_brand_slider" href="beer-garden.html">BEER HALL</a>
-                <a class="each_brand_slider" href="beer-garden.html">DUCK DOWN BAR</a>
-                <a class="each_brand_slider" href="beer-garden.html">BLACK POND TAVERN</a>
-                <a class="each_brand_slider" href="beer-garden.html">ACTA BRASSERIE</a>
-                <a class="each_brand_slider" href="beer-garden.html">CANTINERO</a>
-                <a class="each_brand_slider" href="beer-garden.html">SILK BISTRO</a>
+                @foreach ($data as $item)
+                    <a class="each_brand_slider" href="{{ route('brand.select', $item->name) }}">{{ $item->name }}</a>
+                @endforeach
 
             </div>
             <div class="__nav prev"><svg class="nav_arrow" width="14px" height="9px" viewBox="0 0 14 9"

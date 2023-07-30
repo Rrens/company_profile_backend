@@ -14,9 +14,11 @@ class BrandsController extends Controller
 {
     public function index()
     {
-        return view('page.brands.index');
+        $data = Brands::all();
+        $thumbnail = ImageHeaderBrand::all();
+        return view('page.brands.index', compact('data', 'thumbnail'));
     }
-    public function select_brand()
+    public function select_brand($name)
     {
         $page = 'brand_each';
         return view('page.brands.select_brand', compact('page'));
@@ -26,9 +28,8 @@ class BrandsController extends Controller
     {
         $active = 'brands';
         $brand = Brands::all();
-        $thumbnail = ImageHeaderBrand::first();
-        // dd($thumbnail->where('id_brand', 1));
-        $image = ImageGaleryBrand::first();
+        $thumbnail = ImageHeaderBrand::get();
+        $image = ImageGaleryBrand::get();
         // Brands::withTrashed()->restore();
         // ImageHeaderBrand::withTrashed()->restore();
         // ImageGaleryBrand::withTrashed()->restore();
@@ -43,6 +44,7 @@ class BrandsController extends Controller
             'image' => 'required|image|mimes:png,jpg,jpg',
             'description' => 'required',
             'instagram' => 'required',
+            'address' => 'required',
             'open_outlet_day' => 'required',
             'close_outlet_day' => 'required',
             'open_outlet_time' => 'required',
@@ -67,6 +69,7 @@ class BrandsController extends Controller
         $brand = new Brands();
         $brand->name = $request->name;
         $brand->description = $request->description;
+        $brand->address = $request->address;
         $brand->open_outlet_day = $request->open_outlet_day;
         $brand->close_outlet_day = $request->close_outlet_day;
         $brand->open_outlet_time = $request->open_outlet_time;
@@ -103,6 +106,7 @@ class BrandsController extends Controller
             'id' => 'required',
             'description' => 'required',
             'instagram' => 'required',
+            'address' => 'required',
             'open_outlet_day' => 'required',
             'close_outlet_day' => 'required',
             'open_outlet_time' => 'required',

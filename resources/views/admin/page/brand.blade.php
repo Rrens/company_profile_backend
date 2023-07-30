@@ -98,6 +98,11 @@
                             <input type="text" class="form-control mt-3" id="basicInput" name="instagram"
                                 value="{{ old('instagram') }}">
                         </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Address</label>
+                            <input type="text" class="form-control mt-3" id="basicInput" name="address"
+                                value="{{ old('address') }}">
+                        </div>
                         <div class="form-group">
                             <label for="">Tanggal</label>
                             <div class="d-flex justify-content-between">
@@ -254,6 +259,11 @@
                             <label for="basicInput">Instagram</label>
                             <input type="text" class="form-control mt-3" id="basicInput" readonly
                                 value="{{ $item->instagram }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Address</label>
+                            <input type="text" class="form-control mt-3" id="basicInput" readonly
+                                value="{{ $item->address }}">
                         </div>
                         <div class="form-group">
                             <label for="">Tanggal</label>
