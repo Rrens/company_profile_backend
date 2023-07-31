@@ -31,9 +31,6 @@
         <section class="brand_slider_placeholder"></section>
         <div class="___wrapper">
             @foreach ($data as $item)
-                @php
-                    // dd($item);
-                @endphp
                 <section class="brand_container_title getposition bottom_border">
                     <a href="{{ route('brand.select', $item->name) }}" class="brand_title">{{ $item->name }}</a>
                 </section>

@@ -18,10 +18,16 @@ class BrandsController extends Controller
         $thumbnail = ImageHeaderBrand::all();
         return view('page.brands.index', compact('data', 'thumbnail'));
     }
+
     public function select_brand($name)
     {
         $page = 'brand_each';
-        return view('page.brands.select_brand', compact('page'));
+        $data = Brands::where('name', $name)->first();
+        $list_brand = Brands::select('name')->get();
+        $thumbnail = ImageHeaderBrand::where('id_brand', $data->id)->get();
+        $galery = ImageGaleryBrand::where('id_brand', $data->id)->get();
+        // dd($data);
+        return view('page.brands.select_brand', compact('page', 'list_brand', 'data', 'galery', 'thumbnail'));
     }
 
     public function brand_admin()
