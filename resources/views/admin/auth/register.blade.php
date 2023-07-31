@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="form-group mb-3">
-            <label for="basicInput">Upload Foto Produk</label>
+            <label for="basicInput">Upload Foto </label>
             <input class="form-control mt-2" type="file" name="image" id="formFile">
         </div>
         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>

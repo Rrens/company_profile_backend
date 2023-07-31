@@ -24,7 +24,7 @@
                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#modalTambahOutlet">
                                                 <i class="bi bi-plus"></i>
-                                                Tambah Produk
+                                                Tambah
                                             </button>
                                         </div>
                                     </div>
@@ -33,9 +33,6 @@
                             <div class="card-body">
                                 <div class="row">
                                     @foreach ($brand as $item)
-                                        @php
-                                            // dd($item, $thumbnail->where('id_brand', $item->id)->first()['image']);
-                                        @endphp
                                         <div class="col-lg-3 col-md-6 col-sm-12">
                                             <div class="card">
                                                 <div class="card-content">

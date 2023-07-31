@@ -24,7 +24,7 @@
                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#modalTambahOutlet">
                                                 <i class="bi bi-plus"></i>
-                                                Tambah Produk
+                                                Tambah
                                             </button>
                                         </div>
                                     </div>

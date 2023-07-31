@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EventAdminController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\HeaderController;
@@ -48,6 +49,10 @@ Route::group(
         Route::get('header/{name}', [HeaderController::class, 'filter_outlet'])->name('admin.header.filter');
         Route::post('header', [HeaderController::class, 'store'])->name('admin.header.store');
         Route::post('header/delete', [HeaderController::class, 'delete'])->name('admin.header.delete');
+
+        Route::get('event', [EventController::class, 'index_admin'])->name('admin.event.index');
+        Route::post('event', [EventController::class, 'store'])->name('admin.event.store');
+        Route::post('event/update', [EventController::class, 'update'])->name('admin.event.update');
     }
 );
 

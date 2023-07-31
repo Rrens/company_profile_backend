@@ -59,7 +59,7 @@ class BrandsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            Alert::success('Failed', $validator->messages()->all());
+            Alert::error('Failed', $validator->messages()->all());
             return redirect()->route('admin.brand.index')->withInput();
         }
 

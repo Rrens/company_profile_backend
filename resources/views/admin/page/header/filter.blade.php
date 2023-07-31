@@ -33,7 +33,7 @@
                                 <button type="button" class="btn btn-primary btn-sm ml-5" data-bs-toggle="modal"
                                     data-bs-target="#modalTambahImage">
                                     <i class="bi bi-plus"></i>
-                                    Tambah Produk
+                                    Tambah
                                 </button>
                             </div>
                             <div class="card-body">

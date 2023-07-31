@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brands;
+use App\Models\Events;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EventController extends Controller
 {
@@ -10,5 +15,110 @@ class EventController extends Controller
     {
         $page = 'event_promo';
         return view('page.event.index', compact('page'));
+    }
+
+    public function index_admin()
+    {
+        $active = 'event';
+        $data = Events::with('brand')->get();
+        $brand = Brands::select('name', 'id')->get();
+        return view('admin.page.event.index', compact('active', 'data', 'brand'));
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpg',
+            'date' => 'required',
+            'id_brand' => 'required',
+            'category' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Failed', $validator->messages()->all());
+            return redirect()->route('admin.event.index')->withInput();
+        }
+
+        $image = $request->file('image');
+
+        // PHOTO
+        $image_name = time() . 'event-' . $request->name  . '.' . $image->getClientOriginalExtension();
+        Storage::putFileAs('public/uploads/event/', $image, $image_name);
+
+        $event = new Events();
+        $event->name = $request->name;
+        $event->image = $image_name;
+        $event->date = $request->date;
+        $event->open_time = $request->open_time;
+        $event->close_time = $request->close_time;
+        $event->id_brand = $request->id_brand;
+        $event->category = $request->category;
+        $event->save();
+
+        Alert::toast('Successfully Add Event', 'success');
+        return back();
+    }
+
+    public function update(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'image' => 'required|image|mimes:png,jpg,jpg',
+                'date' => 'required',
+                'id_brand' => 'required',
+                'id' => 'required',
+                'category' => 'required'
+            ]);
+
+            if ($validator->fails()) {
+                Alert::error('Failed', $validator->messages()->all());
+                return back()->withInput();
+            }
+
+            $image = $request->file('image');
+
+            // PHOTO
+            $image_name = time() . 'event-' . $request->name  . '.' . $image->getClientOriginalExtension();
+            Storage::putFileAs('public/uploads/event/', $image, $image_name);
+
+            $event = Events::findOrFail($request->id);
+            $event->name = $request->name;
+            $event->image = $image_name;
+            $event->date = $request->date;
+            $event->open_time = $request->open_time;
+            $event->close_time = $request->close_time;
+            $event->id_brand = $request->id_brand;
+            $event->category = $request->category;
+            $event->save();
+            Alert::toast('Successfully Add Event', 'success');
+            return back();
+        } else {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'date' => 'required',
+                'id_brand' => 'required',
+                'id' => 'required',
+                'category' => 'required'
+            ]);
+
+            if ($validator->fails()) {
+                Alert::error('Failed', $validator->messages()->all());
+                return back()->withInput();
+            }
+            // dd($request->all());
+
+            $event = Events::findOrFail($request->id);
+            $event->name = $request->name;
+            $event->date = $request->date;
+            $event->open_time = $request->open_time;
+            $event->close_time = $request->close_time;
+            $event->id_brand = $request->id_brand;
+            $event->category = $request->category;
+            $event->save();
+            Alert::toast('Successfully Add Event', 'success');
+            return back();
+        }
     }
 }

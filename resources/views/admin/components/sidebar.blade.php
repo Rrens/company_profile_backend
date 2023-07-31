@@ -60,6 +60,12 @@
                         <span>Header</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ $active == 'event' ? 'active' : '' }}">
+                    <a href="{{ route('admin.event.index') }}" class="sidebar-link">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Event</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

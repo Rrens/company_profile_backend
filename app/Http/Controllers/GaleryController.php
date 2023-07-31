@@ -48,7 +48,7 @@ class GaleryController extends Controller
 
         if ($validator->fails()) {
             if ($validator->fails()) {
-                Alert::success('Failed', $validator->messages()->all());
+                Alert::error('Failed', $validator->messages()->all());
                 return back()->withInput();
             }
         }
