@@ -16,14 +16,9 @@
                     family.</div>
                 <div class="career_list">
                     <ul>
-                        <li><a href="/career/marketing.html">Marketing</a></li>
-                        <li><a href="/career/marketing.html">Graphic Designer</a></li>
-                        <li><a href="/career/marketing.html">Bartender</a></li>
-                        <li><a href="/career/marketing.html">Head Chef</a></li>
-                        <li><a href="/career/marketing.html">Assistant Manager</a></li>
-                        <li><a href="/career/marketing.html">Accounting Staff</a></li>
-                        <li><a href="/career/marketing.html">Operational Manager</a></li>
-
+                        @foreach ($data as $item)
+                            <li><a href="{{ route('career.select_career', $item->position) }}">{{ $item->position }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

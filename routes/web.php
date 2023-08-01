@@ -27,6 +27,7 @@ Route::get('brand', [BrandsController::class, 'index'])->name('brand.index');
 Route::get('brand/{name}', [BrandsController::class, 'select_brand'])->name('brand.select');
 Route::get('event', [EventController::class, 'index'])->name('event.index');
 Route::get('career', [CareerController::class, 'index'])->name('career.index');
+Route::get('career/{name}', [CareerController::class, 'select_career'])->name('career.select_career');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 
 Route::group(
@@ -54,6 +55,13 @@ Route::group(
         Route::post('event', [EventController::class, 'store'])->name('admin.event.store');
         Route::post('event/update', [EventController::class, 'update'])->name('admin.event.update');
         Route::post('event/delete', [EventController::class, 'delete'])->name('admin.event.delete');
+
+        Route::get('career', [CareerController::class, 'index_admin'])->name('admin.career.index');
+        Route::get('career/change-status/{id}', [CareerController::class, 'change_status'])->name('admin.career.change_status');
+        Route::get('career/edit/{id}', [CareerController::class, 'edit'])->name('admin.career.edit');
+        Route::post('career', [CareerController::class, 'store'])->name('admin.career.store');
+        Route::post('career/update', [CareerController::class, 'update'])->name('admin.career.update');
+        Route::post('career/delete', [CareerController::class, 'delete'])->name('admin.career.delete');
     }
 );
 

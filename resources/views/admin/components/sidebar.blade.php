@@ -66,6 +66,12 @@
                         <span>Event</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ $active == 'career' ? 'active' : '' }}">
+                    <a href="{{ route('admin.career.index') }}" class="sidebar-link">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Career</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
