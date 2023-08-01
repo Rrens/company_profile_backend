@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('close_time');
             $table->string('image');
             $table->string('category');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

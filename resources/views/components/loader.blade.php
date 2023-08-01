@@ -14,8 +14,6 @@
             </li>
             <li><a href="{{ route('contact.index') }}">CONTACT</a>
             </li>
-
-            {{ $data }}
         </ul>
         <section class="brand_sliders white">
             <div class="bs_collapse_head">OUTLETS <img src="{{ asset('assets/img/icon/arrow_down.svg') }}"></div>

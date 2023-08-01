@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brands;
 use App\Models\Events;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +15,12 @@ class EventController extends Controller
     public function index()
     {
         $page = 'event_promo';
-        return view('page.event.index', compact('page'));
+        $data = Events::with('brand')
+            ->whereDate('date', '>=', Carbon::now())
+            ->orderBy('id_brand')
+            ->get();
+
+        return view('page.event.index', compact('page', 'data'));
     }
 
     public function index_admin()
@@ -62,12 +68,15 @@ class EventController extends Controller
 
     public function update(Request $request)
     {
+        // dd($request->all());
         if ($request->hasFile('image')) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'image' => 'required|image|mimes:png,jpg,jpg',
                 'date' => 'required',
                 'id_brand' => 'required',
+                'open_time' => 'required',
+                'close_time' => 'required',
                 'id' => 'required',
                 'category' => 'required'
             ]);
@@ -99,6 +108,8 @@ class EventController extends Controller
                 'name' => 'required',
                 'date' => 'required',
                 'id_brand' => 'required',
+                'open_time' => 'required',
+                'close_time' => 'required',
                 'id' => 'required',
                 'category' => 'required'
             ]);
@@ -120,5 +131,23 @@ class EventController extends Controller
             Alert::toast('Successfully Add Event', 'success');
             return back();
         }
+    }
+
+    public function delete(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Failed', $validator->messages()->all());
+            return back();
+        }
+
+        $event = Events::findOrFail($request->id);
+        $event->delete();
+
+        Alert::toast('Successfully Delete Event', 'success');
+        return back();
     }
 }

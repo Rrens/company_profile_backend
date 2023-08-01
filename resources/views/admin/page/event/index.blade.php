@@ -78,7 +78,7 @@
                         <div class="form-group mb-3">
                             <label for="">Outlet</label>
                             <fieldset class="form-group mt-3">
-                                <select class="form-select" id="basicSelect" name="id_brand">
+                                <select class="form-select" id="basicSelect" name="id_brand" required>
                                     <option selected hidden>Pilih Outlet</option>
                                     @foreach ($brand as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -164,8 +164,16 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Category</label>
-                            <input type="text" class="form-control mt-3" id="basicInput" name="category"
-                                value="{{ old('category') }}">
+                            <fieldset class="form-group">
+                                <select class="form-select mt-4 ml-4" id="basicSelect" name="category">
+                                    <option selected hidden>Pilih Waktu Selesai</option>
+                                    <option value="SPECIAL EVENT"
+                                        {{ old('category') == 'SPECIAL EVENT' ? 'selected' : '' }}>SPECIAL EVENT</option>
+                                    <option
+                                        value="WEEKLY PROGRAMS"{{ old('category') == 'WEEKLY PROGRAMS' ? 'selected' : '' }}>
+                                        WEEKLY PROGRAMS</option>
+                                </select>
+                            </fieldset>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -189,8 +197,14 @@
             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
                 <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalScrollableTitle">Detail Event</h5>
+                    <div class="modal-header d-flex justify-content-between">
+                        <div class="flex-start">
+                            <h5 class="modal-title" id="exampleModalScrollableTitle">Detail Event</h5>
+                        </div>
+                        <div class="flex-end">
+                            <button class="btn btn-danger" href="#" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteEvent{{ $item->id }}">Delete</button>
+                        </div>
                     </div>
                     <form action="{{ route('admin.event.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -224,8 +238,7 @@
                                     <div class="flex-end">
                                         <div class="d-flex justify-content-between">
                                             <fieldset class="form-group">
-                                                <select class="form-select mt-4 ml-4" id="basicSelect" name="open_time">
-                                                    <option selected hidden>Pilih Waktu Mulai</option>
+                                                <select class="form-select my-4" id="basicSelect" name="open_time">
                                                     <option value="1" {{ $item->open_time == 1 ? 'selected' : '' }}>1
                                                     </option>
                                                     <option value="2" {{ $item->open_time == 2 ? 'selected' : '' }}>2
@@ -244,42 +257,55 @@
                                                     </option>
                                                     <option value="9" {{ $item->open_time == 9 ? 'selected' : '' }}>9
                                                     </option>
-                                                    <option value="10 {{ $item->open_time == 10 ? 'selected' : '' }}">10
+                                                    <option value="10" {{ $item->open_time == 10 ? 'selected' : '' }}>
+                                                        10
                                                     </option>
-                                                    <option value="11 {{ $item->open_time == 11 ? 'selected' : '' }}">11
+                                                    <option value="11" {{ $item->open_time == 11 ? 'selected' : '' }}>
+                                                        11
                                                     </option>
-                                                    <option value="12 {{ $item->open_time == 12 ? 'selected' : '' }}">12
+                                                    <option value="12" {{ $item->open_time == 12 ? 'selected' : '' }}>
+                                                        12
                                                     </option>
-                                                    <option value="13 {{ $item->open_time == 13 ? 'selected' : '' }}">13
+                                                    <option value="13" {{ $item->open_time == 13 ? 'selected' : '' }}>
+                                                        13
                                                     </option>
-                                                    <option value="14 {{ $item->open_time == 14 ? 'selected' : '' }}">14
+                                                    <option value="14" {{ $item->open_time == 14 ? 'selected' : '' }}>
+                                                        14
                                                     </option>
-                                                    <option value="15 {{ $item->open_time == 15 ? 'selected' : '' }}">15
+                                                    <option value="15" {{ $item->open_time == 15 ? 'selected' : '' }}>
+                                                        15
                                                     </option>
-                                                    <option value="16 {{ $item->open_time == 16 ? 'selected' : '' }}">16
+                                                    <option value="16" {{ $item->open_time == 16 ? 'selected' : '' }}>
+                                                        16
                                                     </option>
-                                                    <option value="17 {{ $item->open_time == 17 ? 'selected' : '' }}">17
+                                                    <option value="17" {{ $item->open_time == 17 ? 'selected' : '' }}>
+                                                        17
                                                     </option>
-                                                    <option value="18 {{ $item->open_time == 18 ? 'selected' : '' }}">18
+                                                    <option value="18" {{ $item->open_time == 18 ? 'selected' : '' }}>
+                                                        18
                                                     </option>
-                                                    <option value="19 {{ $item->open_time == 19 ? 'selected' : '' }}">19
+                                                    <option value="19" {{ $item->open_time == 19 ? 'selected' : '' }}>
+                                                        19
                                                     </option>
-                                                    <option value="20 {{ $item->open_time == 20 ? 'selected' : '' }}">20
+                                                    <option value="20" {{ $item->open_time == 20 ? 'selected' : '' }}>
+                                                        20
                                                     </option>
-                                                    <option value="21 {{ $item->open_time == 21 ? 'selected' : '' }}">21
+                                                    <option value="21" {{ $item->open_time == 21 ? 'selected' : '' }}>
+                                                        21
                                                     </option>
-                                                    <option value="22 {{ $item->open_time == 22 ? 'selected' : '' }}">22
+                                                    <option value="22" {{ $item->open_time == 22 ? 'selected' : '' }}>
+                                                        22
                                                     </option>
-                                                    <option value="23 {{ $item->open_time == 23 ? 'selected' : '' }}">23
+                                                    <option value="23" {{ $item->open_time == 23 ? 'selected' : '' }}>
+                                                        23
                                                     </option>
-                                                    <option value="24 {{ $item->open_time == 24 ? 'selected' : '' }}">24
+                                                    <option value="24" {{ $item->open_time == 24 ? 'selected' : '' }}>
+                                                        24
                                                     </option>
                                                 </select>
                                             </fieldset>
-                                            <fieldset class="form-group">
-                                                <select class="form-select mt-4 ml-4" id="basicSelect" name="close_time">
-                                                    <option selected hidden>Pilih Waktu Selesai</option>
-                                                    <option selected hidden>Pilih Waktu Mulai</option>
+                                            <fieldset class="form-group ml-5">
+                                                <select class="form-select my-4" id="basicSelect" name="close_time">
                                                     <option value="1" {{ $item->close_time == 1 ? 'selected' : '' }}>
                                                         1
                                                     </option>
@@ -307,35 +333,50 @@
                                                     <option value="9" {{ $item->close_time == 9 ? 'selected' : '' }}>
                                                         9
                                                     </option>
-                                                    <option value="10 {{ $item->close_time == 10 ? 'selected' : '' }}">10
+                                                    <option value="10"
+                                                        {{ $item->close_time == 10 ? 'selected' : '' }}>10
                                                     </option>
-                                                    <option value="11 {{ $item->close_time == 11 ? 'selected' : '' }}">11
+                                                    <option value="11"
+                                                        {{ $item->close_time == 11 ? 'selected' : '' }}>11
                                                     </option>
-                                                    <option value="12 {{ $item->close_time == 12 ? 'selected' : '' }}">12
+                                                    <option value="12"
+                                                        {{ $item->close_time == 12 ? 'selected' : '' }}>12
                                                     </option>
-                                                    <option value="13 {{ $item->close_time == 13 ? 'selected' : '' }}">13
+                                                    <option value="13"
+                                                        {{ $item->close_time == 13 ? 'selected' : '' }}>13
                                                     </option>
-                                                    <option value="14 {{ $item->close_time == 14 ? 'selected' : '' }}">14
+                                                    <option value="14"
+                                                        {{ $item->close_time == 14 ? 'selected' : '' }}>14
                                                     </option>
-                                                    <option value="15 {{ $item->close_time == 15 ? 'selected' : '' }}">15
+                                                    <option value="15"
+                                                        {{ $item->close_time == 15 ? 'selected' : '' }}>15
                                                     </option>
-                                                    <option value="16 {{ $item->close_time == 16 ? 'selected' : '' }}">16
+                                                    <option value="16"
+                                                        {{ $item->close_time == 16 ? 'selected' : '' }}>16
                                                     </option>
-                                                    <option value="17 {{ $item->close_time == 17 ? 'selected' : '' }}">17
+                                                    <option value="17"
+                                                        {{ $item->close_time == 17 ? 'selected' : '' }}>17
                                                     </option>
-                                                    <option value="18 {{ $item->close_time == 18 ? 'selected' : '' }}">18
+                                                    <option value="18"
+                                                        {{ $item->close_time == 18 ? 'selected' : '' }}>18
                                                     </option>
-                                                    <option value="19 {{ $item->close_time == 19 ? 'selected' : '' }}">19
+                                                    <option value="19"
+                                                        {{ $item->close_time == 19 ? 'selected' : '' }}>19
                                                     </option>
-                                                    <option value="20 {{ $item->close_time == 20 ? 'selected' : '' }}">20
+                                                    <option value="20"
+                                                        {{ $item->close_time == 20 ? 'selected' : '' }}>20
                                                     </option>
-                                                    <option value="21 {{ $item->close_time == 21 ? 'selected' : '' }}">21
+                                                    <option value="21"
+                                                        {{ $item->close_time == 21 ? 'selected' : '' }}>21
                                                     </option>
-                                                    <option value="22 {{ $item->close_time == 22 ? 'selected' : '' }}">22
+                                                    <option value="22"
+                                                        {{ $item->close_time == 22 ? 'selected' : '' }}>22
                                                     </option>
-                                                    <option value="23 {{ $item->close_time == 23 ? 'selected' : '' }}">23
+                                                    <option value="23"
+                                                        {{ $item->close_time == 23 ? 'selected' : '' }}>23
                                                     </option>
-                                                    <option value="24 {{ $item->close_time == 24 ? 'selected' : '' }}">24
+                                                    <option value="24"
+                                                        {{ $item->close_time == 24 ? 'selected' : '' }}>24
                                                     </option>
                                                 </select>
                                             </fieldset>
@@ -350,8 +391,16 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="basicInput">Category</label>
-                                <input type="text" class="form-control mt-3" id="basicInput" name="category"
-                                    value="{{ $item->category }}">
+                                <fieldset class="form-group">
+                                    <select class="form-select mt-4 ml-4" id="basicSelect" name="category">
+                                        <option value="SPECIAL EVENT"
+                                            {{ $item->category == 'SPECIAL EVENT' ? 'selected' : '' }}>SPECIAL EVENT
+                                        </option>
+                                        <option
+                                            value="WEEKLY PROGRAMS"{{ $item->category == 'WEEKLY PROGRAMS' ? 'selected' : '' }}>
+                                            WEEKLY PROGRAMS</option>
+                                    </select>
+                                </fieldset>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -371,14 +420,14 @@
         </div>
     @endforeach
 
-    {{-- MODAL Delete Outlet --}}
-    {{-- @foreach ($brand as $item)
-        <div class="modal fade" id="modalDeleteOutlet{{ $item->id }}" tabindex="-1" role="dialog"
+    {{-- MODAL Delete Event --}}
+    @foreach ($data as $item)
+        <div class="modal fade" id="modalDeleteEvent{{ $item->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
-                        <h5 class="modal-title" id="exampleModalScrollableTitle">Delete Outlet {{ $item->name }}</h5>
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">Delete Event {{ $item->name }}</h5>
                     </div>
                     <div class="modal-body">
                         <center>
@@ -386,7 +435,7 @@
                                 <i class="bx bx-x d-block d-sm-none"></i>
                                 <span class="d-none d-sm-block">Close</span>
                             </button>
-                            <form action="{{ route('admin.brand.delete') }}" method="post">
+                            <form action="{{ route('admin.event.delete') }}" method="post">
                                 @csrf
                                 <input type="number" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="btn btn-danger ml-1" href="#">
@@ -399,7 +448,7 @@
                 </div>
             </div>
         </div>
-    @endforeach --}}
+    @endforeach
 
 
 

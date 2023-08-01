@@ -53,6 +53,7 @@ Route::group(
         Route::get('event', [EventController::class, 'index_admin'])->name('admin.event.index');
         Route::post('event', [EventController::class, 'store'])->name('admin.event.store');
         Route::post('event/update', [EventController::class, 'update'])->name('admin.event.update');
+        Route::post('event/delete', [EventController::class, 'delete'])->name('admin.event.delete');
     }
 );
 
