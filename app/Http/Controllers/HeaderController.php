@@ -18,7 +18,7 @@ class HeaderController extends Controller
         $brand = Brands::select('id', 'name')
             ->orderBy('created_at')
             ->get();
-        $data = ImageHeaderBrand::all();
+        $data = ImageHeaderBrand::with('brands')->get();
 
         return view('admin.page.header.index', compact('data', 'brand', 'active'));
     }
@@ -31,13 +31,27 @@ class HeaderController extends Controller
         $for_data = $brand[0]->name;
         $brand_for_filter = Brands::all();
         $data = DB::table('image_header_brand as img')
-            ->select(DB::raw('distinct(img.id)'), 'b.name', 'img.image')
+            ->select(DB::raw('distinct(img.id)'), 'b.name', 'img.image', 'img.status', 'b.id as id_brand')
             ->join('brands as b', 'b.id', '=', 'img.id_brand')
             ->where('b.name', $name)
             ->orderBy('img.created_at')
             ->get();
 
         return view('admin.page.header.filter', compact('data', 'brand', 'brand_for_filter', 'for_data', 'active'));
+    }
+
+    public function change_status($id)
+    {
+        $image = ImageHeaderBrand::findOrFail($id);
+        if ($image->status == 1) {
+            $image->status = 0;
+        } else {
+            $image->status = 1;
+        }
+        $image->save();
+
+        Alert::toast('Successfully Change Status', 'success');
+        return back();
     }
 
     public function store(Request $request)
@@ -63,6 +77,7 @@ class HeaderController extends Controller
         $image_galery = new ImageHeaderBrand();
         $image_galery->id_brand = $request->outlet;
         $image_galery->image = $image_name;
+        $image_galery->status = 1;
         $image_galery->save();
         // dd($image_galery, $image_galery->save());
         Alert::toast('Successfully Add Header', 'success');

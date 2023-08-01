@@ -44,7 +44,7 @@
                                                             style="width: 350px; height: 200px">
                                                         <div class="card-body">
                                                             <h5 class="card-title">{{ $item->name }}</h5>
-                                                            {!! $item->description !!}
+                                                            {{-- {!! $item->description !!} --}}
                                                         </div>
                                                     </button>
                                                 </div>

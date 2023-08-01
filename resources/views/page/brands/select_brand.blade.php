@@ -139,7 +139,7 @@
                         href="https://www.instagram.com/{{ $data->instagram }}/">{{ '@' . $data->instagram }}</a>
                 </div>
             </div>
-            <a href="https://wa.me/{{ $item->instagram }}" class="btn_rsvp">RSVP</a>
+            <a href="https://wa.me/{{ $data->instagram }}" class="btn_rsvp">RSVP</a>
         </div>
 
     </section>

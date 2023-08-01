@@ -45,11 +45,13 @@ Route::group(
         Route::get('galeries/{name}', [GaleryController::class, 'filter_outlet'])->name('admin.galeries.filter');
         Route::post('galeries', [GaleryController::class, 'store'])->name('admin.galeries.store');
         Route::post('galeries/delete', [GaleryController::class, 'delete'])->name('admin.galeries.delete');
+        Route::get('galeries/change-status/{id}', [GaleryController::class, 'change_status'])->name('admin.galeries.change_status');
 
         Route::get('header', [HeaderController::class, 'index'])->name('admin.header.index');
         Route::get('header/{name}', [HeaderController::class, 'filter_outlet'])->name('admin.header.filter');
         Route::post('header', [HeaderController::class, 'store'])->name('admin.header.store');
         Route::post('header/delete', [HeaderController::class, 'delete'])->name('admin.header.delete');
+        Route::get('header/change-status/{id}', [HeaderController::class, 'change_status'])->name('admin.header.change_status');
 
         Route::get('event', [EventController::class, 'index_admin'])->name('admin.event.index');
         Route::post('event', [EventController::class, 'store'])->name('admin.event.store');

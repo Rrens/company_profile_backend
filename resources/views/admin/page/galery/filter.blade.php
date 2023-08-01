@@ -37,25 +37,40 @@
                                 </button>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    @foreach ($data as $item)
-                                        <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <div class="card">
-                                                <div class="card-content">
-                                                    <button class="dropdown-item" href="#" data-bs-toggle="modal"
+                                <table class="table" id="table1">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Brand</th>
+                                            <th>Image</th>
+                                            <th>Detail</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>
+                                                    <img src="{{ empty($item->image) ? '-' : asset('storage/uploads/image/' . $item->image) }}"
+                                                        class="card-img-top img-fluid" alt="{{ $item->image }}"
+                                                        style="width: 350px; height: 200px">
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                         data-bs-target="#modalDetailImage{{ $item->id }}">
-                                                        <img src="{{ empty($item->image) ? '-' : asset('storage/uploads/image/' . $item->image) }}"
-                                                            class="card-img-top img-fluid" alt=""
-                                                            style="width: 350px; height: 200px">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">{{ $item->name }}</h5>
-                                                        </div>
+                                                        Delete
                                                     </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('admin.galeries.change_status', $item->id) }}"
+                                                        class="btn {{ $item->status == 1 ? 'btn-success' : 'btn-danger' }}">{{ $item->status == 1 ? 'Active' : 'Deactive' }}</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

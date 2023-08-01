@@ -15,7 +15,7 @@ class BrandsController extends Controller
     public function index()
     {
         $data = Brands::all();
-        $thumbnail = ImageHeaderBrand::all();
+        $thumbnail = ImageHeaderBrand::where('status', 1)->get();
         return view('page.brands.index', compact('data', 'thumbnail'));
     }
 
@@ -24,8 +24,8 @@ class BrandsController extends Controller
         $page = 'brand_each';
         $data = Brands::where('name', $name)->first();
         $list_brand = Brands::select('name')->get();
-        $thumbnail = ImageHeaderBrand::where('id_brand', $data->id)->get();
-        $galery = ImageGaleryBrand::where('id_brand', $data->id)->get();
+        $thumbnail = ImageHeaderBrand::where('id_brand', $data->id)->where('status', 1)->get();
+        $galery = ImageGaleryBrand::where('id_brand', $data->id)->where('status', 1)->get();
         // dd($data);
         return view('page.brands.select_brand', compact('page', 'list_brand', 'data', 'galery', 'thumbnail'));
     }
@@ -87,11 +87,13 @@ class BrandsController extends Controller
         $photo_thumbnail = new ImageHeaderBrand();
         $photo_thumbnail->id_brand = $brand->id;
         $photo_thumbnail->image = $thumbnail_name;
+        $photo_thumbnail->status = 1;
         $photo_thumbnail->save();
 
         $photo_image = new ImageGaleryBrand();
         $photo_image->id_brand = $brand->id;
         $photo_image->image = $image_name;
+        $photo_image->status = 1;
         $photo_image->save();
 
         Alert::toast('Successfully Add Outlet', 'success');

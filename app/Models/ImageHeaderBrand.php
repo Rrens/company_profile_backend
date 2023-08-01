@@ -18,6 +18,7 @@ class ImageHeaderBrand extends Model
     protected $fillable = [
         'id_brand',
         'image',
+        'status',
         'created_at',
         'updated_at',
     ];
