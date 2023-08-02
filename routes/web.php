@@ -7,8 +7,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventAdminController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\HappeningController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,6 +66,16 @@ Route::group(
         Route::post('career', [CareerController::class, 'store'])->name('admin.career.store');
         Route::post('career/update', [CareerController::class, 'update'])->name('admin.career.update');
         Route::post('career/delete', [CareerController::class, 'delete'])->name('admin.career.delete');
+
+        Route::get('menu', [MenuController::class, 'index'])->name('admin.menu.index');
+        Route::post('menu', [MenuController::class, 'store'])->name('admin.menu.store');
+        Route::post('menu/update', [MenuController::class, 'update'])->name('admin.menu.update');
+        Route::post('menu/delete', [MenuController::class, 'delete'])->name('admin.menu.delete');
+
+        Route::get('happening', [HappeningController::class, 'index'])->name('admin.happening.index');
+        Route::post('happening', [HappeningController::class, 'store'])->name('admin.happening.store');
+        Route::post('happening/update', [HappeningController::class, 'update'])->name('admin.happening.update');
+        Route::post('happening/delete', [HappeningController::class, 'delete'])->name('admin.happening.delete');
     }
 );
 

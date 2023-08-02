@@ -7,7 +7,7 @@
     <title>Restopia - @yield('title')</title>
 
     <link rel="stylesheet" href="{{ asset('admin/css/main/app.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/css/main/app-dark.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('admin/css/main/app-dark.css') }}" /> --}}
     <link rel="shortcut icon" href="{{ asset('admin/images/logo/favicon.ico') }}" type="image/x-icon" />
     <link rel="shortcut icon" href="{{ asset('admin/images/logo/favicon.png') }}" type="image/png" />
 

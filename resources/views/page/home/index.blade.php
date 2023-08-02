@@ -8,9 +8,8 @@
             </div>
             <div class="slider_wrapper">
                 <div class="slider_each " color="white">
-                    <img class="slider_img" src="https://biko-group.com/files/2021/12/30/61cd74f1e7e4c43198739045.jpeg">
-                    <img class="slider_img mobile"
-                        src="https://biko-group.com/files/2021/12/27/61c9925ee902b42570355599.jpeg">
+                    <img class="slider_img" src="{{ asset('assets/img/home_image.jpg') }}">
+                    <img class="slider_img mobile" src="{{ asset('assets/img/home_image.jpg') }}">
                 </div>
             </div>
             <div class="slider_navs"></div>

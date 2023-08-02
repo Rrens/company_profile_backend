@@ -95,7 +95,7 @@ class HeaderController extends Controller
         $image_galery = ImageHeaderBrand::findOrFail($request->id);
         $image_galery->delete();
 
-        Alert::toast('Successfully Delete Hedaer', 'success');
+        Alert::toast('Successfully Delete Header', 'success');
         return back();
     }
 }

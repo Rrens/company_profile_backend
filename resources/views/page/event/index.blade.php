@@ -40,8 +40,8 @@
                         <div class="events_text">
                             @if ($item->category == 'SPECIAL EVENT')
                                 <span class="inner_text_all">
-                                    <p>{{ date('l, M d Y', strtotime($item->date)) }}, {{ $item->open_time }} to
-                                        {{ $item->close_time }}</p>
+                                    <p>{{ date('l, M d Y', strtotime($item->date)) }}, {{ $item->open_time . '.00' }} to
+                                        {{ $item->close_time . '.00' }}</p>
                                     <p class="popup" data-popuptype="image"
                                         data-imgsrc="{{ empty($item->image) ? '-' : asset('storage/uploads/event/' . $item->image) }}">
                                         {{ $item->name }}</p>
@@ -56,8 +56,8 @@
                         <div class="promotion_text">
                             @if ($item->category == 'WEEKLY PROGRAMS')
                                 <span class="inner_text_all">
-                                    <p>{{ date('l, M d Y', strtotime($item->date)) }}, {{ $item->open_time }} to
-                                        {{ $item->close_time }}</p>
+                                    <p>{{ date('l, M d Y', strtotime($item->date)) }}, {{ $item->open_time . '.00' }} to
+                                        {{ $item->close_time . '.00' }}</p>
                                     <p class="popup" data-popuptype="image"
                                         data-imgsrc="{{ empty($item->image) ? '-' : asset('storage/uploads/event/' . $item->image) }}">
                                         {{ $item->name }}</p>
@@ -68,12 +68,6 @@
                                 </span>
                             @endif
                         </div>
-
-                        {{-- <div class="promotion_text">
-                            <span class="inner_text_all">
-                                <p> NO PROGRAMS</p>
-                            </span>
-                        </div> --}}
                     </div>
                 </section>
             @endforeach

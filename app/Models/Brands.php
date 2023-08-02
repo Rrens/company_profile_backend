@@ -34,4 +34,9 @@ class Brands extends Model
     {
         return $this->belongsTo(Events::class);
     }
+
+    public function happening()
+    {
+        return $this->belongsTo(Happening::class);
+    }
 }

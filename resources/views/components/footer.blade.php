@@ -7,6 +7,6 @@
             <input id="footerSubmit" class="fs_submit" type="submit" value="I WANT IN!" d-value="I WANT IN!"
                 m-value="SUBSCRIBE">
         </form>`
-        <div class="footer_copyright">2022 © BIKO GROUP</div>
+        <div class="footer_copyright">2022 © 1010 GROUP</div>
     </div>
 </footer>
