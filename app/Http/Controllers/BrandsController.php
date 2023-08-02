@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brands;
+use App\Models\Happening;
 use App\Models\ImageGaleryBrand;
 use App\Models\ImageHeaderBrand;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -26,8 +28,10 @@ class BrandsController extends Controller
         $list_brand = Brands::select('name')->get();
         $thumbnail = ImageHeaderBrand::where('id_brand', $data->id)->where('status', 1)->get();
         $galery = ImageGaleryBrand::where('id_brand', $data->id)->where('status', 1)->get();
+        $happening = Happening::where('id_brand', $data->id)->first();
+        $menu = Menu::where('id_brand', $data->id)->first();
         // dd($data);
-        return view('page.brands.select_brand', compact('page', 'list_brand', 'data', 'galery', 'thumbnail'));
+        return view('page.brands.select_brand', compact('page', 'list_brand', 'data', 'galery', 'thumbnail', 'happening', 'menu'));
     }
 
     public function brand_admin()

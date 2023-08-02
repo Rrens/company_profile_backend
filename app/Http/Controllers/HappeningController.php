@@ -14,6 +14,7 @@ class HappeningController extends Controller
     public function index()
     {
         $active = 'happening';
+        Happening::withTrashed()->restore();
         $brand = Brands::select('name', 'id')->get();
         $data = Happening::with('brand')->get();
 
@@ -122,7 +123,11 @@ class HappeningController extends Controller
         }
 
         $data = Happening::findOrFail($request->id);
-        $data->dalete();
+
+        $data->delete();
+        // $data = Happening::findOrFail($request->id);
+        // dd($data);
+        // $data->dalete();
 
         Alert::toast('Successfully Delete Happening', 'success');
         return back();

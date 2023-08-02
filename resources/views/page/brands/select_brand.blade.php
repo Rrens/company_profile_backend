@@ -9,7 +9,14 @@
                     <polyline points="338 22 344.070504 28.3529412 350 22.1475688"></polyline>
                 </g>
             </svg></div>
-        <div class="_wrapper dropdown__wrapper dragscroll"><span>HAPPENINGS</span> <span>GALLERY</span> <span>MENU</span>
+        <div class="_wrapper dropdown__wrapper dragscroll">
+            @if (!empty($happening->image))
+                <span>HAPPENINGS</span>
+            @endif
+            <span>GALLERY</span>
+            @if (!empty($happening->image))
+                <span>MENU</span>
+            @endif
             <span>CONTACT</span>
         </div>
     </div>
@@ -58,19 +65,21 @@
                 {!! $data->description !!}
             </div>
         </section>
-        <section id="happenings" class="brand_title getposition">
-            <div class="_wrapper">HAPPENINGS</div>
-        </section>
-        <section class="happenings_content bottom_border">
-            <div class="_wrapper dragscroll">
-                <span class="each_happening popup" data-popuptype="image"
-                    data-imgsrc="https://biko-group.com/files/2022/05/10/627a48921f14069912757509.jpeg">
-                    <img class="poster_img progressive__load"
-                        data-src="https://biko-group.com/files/2022/05/10/627a489a6a59c44570733379.jpeg">
-                </span>
+        @if (!empty($happening->image))
+            <section id="happenings" class="brand_title getposition">
+                <div class="_wrapper">HAPPENINGS</div>
+            </section>
+            <section class="happenings_content bottom_border">
+                <div class="_wrapper dragscroll">
+                    <span class="each_happening popup" data-popuptype="image"
+                        data-imgsrc="{{ empty($happening->image) ? '-' : asset('storage/uploads/happening/' . $happening->image) }}">
+                        <img class="poster_img progressive__load"
+                            data-src="{{ empty($happening->image) ? '-' : asset('storage/uploads/happening/' . $happening->image) }}">
+                    </span>
 
-            </div>
-        </section>
+                </div>
+            </section>
+        @endif
         <section id="gallery" class="brand_title getposition">
             <div class="_wrapper">GALLERY</div>
         </section>
@@ -103,16 +112,24 @@
                 @endforeach
             </div>
         </section>
-        <section id="menu" class="brand_title getposition">
-            <div class="_wrapper">MENU</div>
-        </section>
-        <section class="menu_section">
-            <div class="_wrapper btn_2_wrapper">
-                <a href="/files/food+menu+-+november+%281%29.pdf" target="_blank" class="menu_btn_2">FOOD</a>
-                <a href="/files/bev+bg+scbd+-+november+%282%29.pdf" target="_blank" class="menu_btn_2">DRINK</a>
-            </div>
+        @if (!empty($menu))
+            <section id="menu" class="brand_title getposition">
+                <div class="_wrapper">MENU</div>
+            </section>
+            <section class="menu_section">
+                <div class="_wrapper btn_2_wrapper">
+                    @if (!empty($menu->food))
+                        <a href="{{ empty($menu->food) ? '-' : asset('storage/uploads/menu/' . $menu->food) }}"
+                            target="_blank" class="menu_btn_2">FOOD</a>
+                    @endif
+                    @if (!empty($menu->food))
+                        <a href="{{ empty($menu->drink) ? '-' : asset('storage/uploads/drink/' . $menu->drink) }}"
+                            target="_blank" class="menu_btn_2">DRINK</a>
+                    @endif
+                </div>
 
-        </section>
+            </section>
+        @endif
 
 
     </div>
