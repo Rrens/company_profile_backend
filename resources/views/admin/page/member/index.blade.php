@@ -51,20 +51,20 @@
                                                                 <td>{{ $loop->iteration }}</td>
                                                                 <td>{{ $item->name }}</td>
                                                                 <td>
-                                                                    <a href="{{ route('admin.career.edit', $item->id) }}"
-                                                                        class="btn btn-primary">EDIT</a>
+                                                                    {{ $item->email }}
                                                                 </td>
                                                                 <td>
+                                                                    {{ $item->role }}
                                                                 </td>
                                                                 <td>
                                                                     <button type="button" class="btn btn-danger"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#modalDeleteCareer{{ $item->id }}">
+                                                                        data-bs-target="#modalDeleteMember{{ $item->id }}">
                                                                         Delete
                                                                     </button>
 
-                                                                    <a href="{{ route('admin.career.edit', $item->id) }}"
-                                                                        class="btn btn-primary">EDIT</a>
+                                                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                                                        data-bs-target="#modalEditMember{{ $item->id }}">EDIT</button>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
@@ -88,9 +88,10 @@
         <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Career</h5>
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">
+                        Tambah Career</h5>
                 </div>
-                <form action="{{ route('admin.career.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.member.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group mb-3">
@@ -103,13 +104,18 @@
                             <input type="email" class="form-control mt-3" id="basicInput" name="email"
                                 value="{{ old('email') }}">
                         </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Password</label>
+                            <input type="text" class="form-control mt-3" id="basicInput" name="password"
+                                value="{{ old('password') }}">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
                             <i class="bx bx-x d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Close</span>
                         </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                        <button type="submit" class="btn btn-primary ml-1">
                             <i class="bx bx-check d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Accept</span>
                         </button>
@@ -119,14 +125,70 @@
         </div>
     </div>
 
+    @foreach ($data as $item)
+        <div class="modal fade" id="modalEditMember{{ $item->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">
+                            Edit Career {{ $item->name }}</h5>
+                    </div>
+                    <form action="{{ route('admin.member.update') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-group mb-3">
+                                <label for="basicInput">Name</label>
+                                <input type="number" name="id" value="{{ $item->id }}" hidden>
+                                <input type="text" class="form-control mt-3" id="basicInput" name="name"
+                                    value="{{ $item->name }}">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="basicInput">Email</label>
+                                <input type="email" class="form-control mt-3" id="basicInput" name="email"
+                                    value="{{ $item->email }}">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="basicInput">Role</label>
+                                <select class="form-select mt-3" name="role">
+                                    <option value="superadmin" {{ $item->role == 'superadmin' ? 'selected' : '' }}>super
+                                        admin
+                                    </option>
+                                    <option value="admin" {{ $item->role == 'admin' ? 'selected' : '' }}>admin
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="basicInput">Password</label>
+                                <input type="text" class="form-control mt-3" id="basicInput" name="password"
+                                    value="{{ old('password') }}">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                                <i class="bx bx-x d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Close</span>
+                            </button>
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Accept</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
     {{-- MODAL Delete Career --}}
     @foreach ($data as $item)
-        <div class="modal fade" id="modalDeleteCareer{{ $item->id }}" tabindex="-1" role="dialog"
+        <div class="modal fade" id="modalDeleteMember{{ $item->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document" style="height: 110%;">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
-                        <h5 class="modal-title" id="exampleModalScrollableTitle">Delete Member {{ $item->name }}</h5>
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">
+                            Delete Member {{ $item->name }}</h5>
                     </div>
                     <div class="modal-body">
                         <center>
@@ -134,7 +196,7 @@
                                 <i class="bx bx-x d-block d-sm-none"></i>
                                 <span class="d-none d-sm-block">Close</span>
                             </button>
-                            <form action="{{ route('admin.career.delete') }}" method="post">
+                            <form action="{{ route('admin.member.delete') }}" method="post">
                                 @csrf
                                 <input type="number" name="id" value="{{ $item->id }}" hidden>
                                 <button type="submit" class="btn btn-danger ml-1" href="#">

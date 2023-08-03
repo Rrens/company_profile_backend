@@ -15,11 +15,12 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('admin.auth.login');
         if (Auth::check()) {
+            if (Auth::user()->role == 'admin') {
+                return redirect()->route('admin.brand.index');
+            }
             return redirect()->route('admin.member.index');
         }
-
         return view('admin.auth.login');
     }
 
@@ -27,7 +28,7 @@ class AuthController extends Controller
     {
         $active = 'admin';
         $data = User::all();
-        return view('admin.member.index', compact('active', 'data'));
+        return view('admin.page.member.index', compact('active', 'data'));
     }
 
     public function post_login(Request $request)
@@ -52,7 +53,10 @@ class AuthController extends Controller
             Alert::toast('Email or Password is wrong', 'error');
             return redirect()->route('login')->withErrors('Email or Password is wrong');
         }
-        return redirect()->route('admin.brand.index');
+        if (Auth::user()->role == 'admin') {
+            return redirect()->route('admin.brand.index');
+        }
+        return redirect()->route('admin.member.index');
     }
 
     // public function register()
@@ -73,7 +77,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             Alert::error($validator->messages()->all());
-            return redirect()->route('login');
+            return back()->withInput();
         }
 
         $user = new User();
@@ -82,6 +86,73 @@ class AuthController extends Controller
         $user->role = 'admin';
         $user->password = Hash::make($request->password);
         $user->save();
+
+        Alert::toast('Successfully Add Member', 'success');
+        return back();
+    }
+
+    public function update(Request $request)
+    {
+        if (!empty($request->password)) {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+                'name' => 'required',
+                'role' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|min:8'
+            ]);
+
+            if ($validator->fails()) {
+                Alert::error($validator->messages()->all());
+                return back()->withInput();
+            }
+
+            $user = User::findOrFail($request->id);
+            $user->name = $request->name;
+            $user->role = $request->role;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+        } else {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+                'name' => 'required',
+                'role' => 'required',
+                'email' => 'required|email',
+            ]);
+
+            if ($validator->fails()) {
+                Alert::error($validator->messages()->all());
+                return back()->withInput();
+            }
+
+            $user = User::findOrFail($request->id);
+            $user->name = $request->name;
+            $user->role = $request->role;
+            $user->email = $request->email;
+        }
+
+        $user->save();
+
+        Alert::toast('Successfully Update Member', 'success');
+        return back();
+    }
+
+    public function delete(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error($validator->messages()->all());
+            return back();
+        }
+
+        $user = User::findOrFail($request->id);
+        $user->delete();
+
+        Alert::toast('Successfully Delete Member', 'success');
+        return back();
     }
 
     public function logout()

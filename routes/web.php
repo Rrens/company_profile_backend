@@ -34,7 +34,8 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact.index'
 
 Route::group(
     [
-        'prefix' => 'admin'
+        'prefix' => 'admin',
+        'middleware' => ['auth', 'role:admin,superadmin']
     ],
     function () {
         Route::get('brand', [BrandsController::class, 'brand_admin'])->name('admin.brand.index');
@@ -76,12 +77,21 @@ Route::group(
         Route::post('happening', [HappeningController::class, 'store'])->name('admin.happening.store');
         Route::post('happening/update', [HappeningController::class, 'update'])->name('admin.happening.update');
         Route::post('happening/delete', [HappeningController::class, 'delete'])->name('admin.happening.delete');
-
-        Route::get('member', [AuthController::class, 'admin_page'])->name('admin.member.index');
-        Route::post('member', [AuthController::class, 'post_register'])->name('admin.member.post');
     }
 );
 
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => ['auth', 'role:superadmin']
+    ],
+    function () {
+        Route::get('member', [AuthController::class, 'admin_page'])->name('admin.member.index');
+        Route::post('member', [AuthController::class, 'post_register'])->name('admin.member.store');
+        Route::post('member/update', [AuthController::class, 'update'])->name('admin.member.update');
+        Route::post('member/delete', [AuthController::class, 'delete'])->name('admin.member.delete');
+    }
+);
 Route::group(
     [
         'prefix' => 'auth',
@@ -89,7 +99,7 @@ Route::group(
     function () {
         Route::get('login', [AuthController::class, 'login'])->name('login');
         Route::post('post_login', [AuthController::class, 'post_login'])->name('post_login');
-        Route::post('register', [AuthController::class, 'register'])->name('register');
-        Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+        // Route::post('register', [AuthController::class, 'register'])->name('register');
+        Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
     }
 );

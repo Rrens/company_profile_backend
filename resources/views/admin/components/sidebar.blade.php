@@ -3,7 +3,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href=""><img src="{{ asset('admin/images/logo/logo.svg') }}" alt="Logo" width="100px"
+                    <a href=""><img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px"
                             srcset="" /></a>
                 </div>
                 <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
@@ -20,12 +20,14 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">ADMIN</li>
-                <li class="sidebar-item {{ $active == 'admin' ? 'active' : '' }}">
-                    <a href="{{ route('admin.member.index') }}" class="sidebar-link">
-                        <i class="bi bi-people"></i>
-                        <span>Members</span>
-                    </a>
-                </li>
+                @if (auth()->user()->role == 'superadmin')
+                    <li class="sidebar-item {{ $active == 'admin' ? 'active' : '' }}">
+                        <a href="{{ route('admin.member.index') }}" class="sidebar-link">
+                            <i class="bi bi-people"></i>
+                            <span>Members</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="sidebar-item {{ $active == 'brands' ? 'active' : '' }}">
                     <a href="{{ route('admin.brand.index') }}" class="sidebar-link">
                         <i class="bi bi-house-fill"></i>
@@ -66,6 +68,12 @@
                     <a href="{{ route('admin.happening.index') }}" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
                         <span>Happening</span>
+                    </a>
+                </li>
+                <li class="sidebar-item ">
+                    <a href="{{ route('logout') }}" class="sidebar-link">
+                        <i class="bi bi-door-open-fill"></i>
+                        <span>Logout</span>
                     </a>
                 </li>
             </ul>

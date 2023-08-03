@@ -8,6 +8,7 @@ use App\Models\ImageGaleryBrand;
 use App\Models\ImageHeaderBrand;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -36,6 +37,8 @@ class BrandsController extends Controller
 
     public function brand_admin()
     {
+        // dd(Auth::user()->role);
+
         $active = 'brands';
         $brand = Brands::all();
         $thumbnail = ImageHeaderBrand::get();
