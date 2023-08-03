@@ -20,39 +20,45 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">ADMIN</li>
+                <li class="sidebar-item {{ $active == 'admin' ? 'active' : '' }}">
+                    <a href="{{ route('admin.member.index') }}" class="sidebar-link">
+                        <i class="bi bi-people"></i>
+                        <span>Members</span>
+                    </a>
+                </li>
                 <li class="sidebar-item {{ $active == 'brands' ? 'active' : '' }}">
                     <a href="{{ route('admin.brand.index') }}" class="sidebar-link">
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-house-fill"></i>
                         <span>Brands</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ $active == 'galery' ? 'active' : '' }}">
                     <a href="{{ route('admin.galeries.index') }}" class="sidebar-link">
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-image-fill"></i>
                         <span>Galeries</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ $active == 'header' ? 'active' : '' }}">
                     <a href="{{ route('admin.header.index') }}" class="sidebar-link">
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-image"></i>
                         <span>Header</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ $active == 'event' ? 'active' : '' }}">
                     <a href="{{ route('admin.event.index') }}" class="sidebar-link">
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-calendar-event-fill"></i>
                         <span>Event</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ $active == 'career' ? 'active' : '' }}">
                     <a href="{{ route('admin.career.index') }}" class="sidebar-link">
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-people-fill"></i>
                         <span>Career</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ $active == 'menu' ? 'active' : '' }}">
                     <a href="{{ route('admin.menu.index') }}" class="sidebar-link">
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-menu-app-fill"></i>
                         <span>Menu</span>
                     </a>
                 </li>

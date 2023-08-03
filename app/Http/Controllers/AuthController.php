@@ -17,10 +17,17 @@ class AuthController extends Controller
     {
         return view('admin.auth.login');
         if (Auth::check()) {
-            return redirect()->route('admin.brand.index');
+            return redirect()->route('admin.member.index');
         }
 
         return view('admin.auth.login');
+    }
+
+    public function admin_page()
+    {
+        $active = 'admin';
+        $data = User::all();
+        return view('admin.member.index', compact('active', 'data'));
     }
 
     public function post_login(Request $request)
@@ -48,21 +55,20 @@ class AuthController extends Controller
         return redirect()->route('admin.brand.index');
     }
 
-    public function register()
-    {
-        return view('admin.auth.login');
-        if (Auth::check()) {
-            return redirect()->route('admin.brand.index');
-        }
+    // public function register()
+    // {
+    //     if (Auth::check()) {
+    //         return redirect()->route('admin.brand.index');
+    //     }
 
-        return view('admin.auth.login');
-    }
+    //     return view('admin.auth.login');
+    // }
 
     public function post_register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|min:8'
         ]);
 
         if ($validator->fails()) {
@@ -73,6 +79,7 @@ class AuthController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role = 'admin';
         $user->password = Hash::make($request->password);
         $user->save();
     }

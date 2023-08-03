@@ -76,6 +76,9 @@ Route::group(
         Route::post('happening', [HappeningController::class, 'store'])->name('admin.happening.store');
         Route::post('happening/update', [HappeningController::class, 'update'])->name('admin.happening.update');
         Route::post('happening/delete', [HappeningController::class, 'delete'])->name('admin.happening.delete');
+
+        Route::get('member', [AuthController::class, 'admin_page'])->name('admin.member.index');
+        Route::post('member', [AuthController::class, 'post_register'])->name('admin.member.post');
     }
 );
 
@@ -85,6 +88,7 @@ Route::group(
     ],
     function () {
         Route::get('login', [AuthController::class, 'login'])->name('login');
+        Route::post('post_login', [AuthController::class, 'post_login'])->name('post_login');
         Route::post('register', [AuthController::class, 'register'])->name('register');
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     }
