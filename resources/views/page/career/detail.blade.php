@@ -18,7 +18,7 @@
                         <ul>
                             {!! $data->description !!}
                         </ul>
-                        <span class="career_apply">To apply, please send your CV to <a href="#">hrd@biko-group.com</a>
+                        <span class="career_apply">To apply, please send your CV to <a href="#">admin@1010-group.com</a>
                             or click the button below.</span>
                     </div><a href="mailto:" class="btn_apply">LET ME IN</a>
                 </div>

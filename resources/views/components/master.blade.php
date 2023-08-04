@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>BIKO - @yield('title')</title>
+    <title>1010 GROUP - @yield('title')</title>
 
     <link rel="preload" href="{{ asset('assets/css/style.css') }}" as="style">
     <link rel="preload" href="{{ asset('assets/script/app.js') }}" as="script">

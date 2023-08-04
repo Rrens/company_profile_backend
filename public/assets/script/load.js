@@ -136,9 +136,8 @@
       renderer: 'svg',
       loop: !0,
       autoplay: !0,
-      path: '/assets/biko.json',
-      // path: 'https://biko-group.com/BIKO.json',
-      name: 'biko_loading',
+      path: '/assets/1010group.json',
+      name: '1010group_loading',
      }),
      n = function (t, e) {
       t.forEach(function (t) {

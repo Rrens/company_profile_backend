@@ -26,6 +26,7 @@ class Brands extends Model
         'open_outlet_time',
         'close_outlet_time',
         'categories',
+        'logo',
         'created_at',
         'updated_at',
     ];

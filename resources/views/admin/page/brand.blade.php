@@ -77,6 +77,11 @@
                                 value="{{ old('name') }}">
                         </div>
                         <div class="form-group mb-3">
+                            <label for="basicInput">Logo</label>
+                            <input type="file" class="form-control mt-3" id="basicInput" name="logo"
+                                value="{{ old('logo') }}">
+                        </div>
+                        <div class="form-group mb-3">
                             <label for="basicInput">Thumbnail</label>
                             <input type="file" class="form-control mt-3" id="basicInput" name="thumbnail"
                                 value="{{ old('thumbnail') }}">
@@ -233,6 +238,11 @@
                             <label for="basicInput">Name</label>
                             <input type="text" class="form-control mt-3" id="basicInput" value="{{ $item->name }}"
                                 readonly>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Logo</label>
+                            <img src="{{ empty($item->logo) ? '-' : asset('storage/uploads/logo/' . $item->logo) }}"
+                                class="card-img-top img-fluid mt-3" alt="{{ $item->logo }}">
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Thumbnail</label>

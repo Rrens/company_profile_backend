@@ -23,7 +23,7 @@
                 </form>
 
                 <div class="_wrapper address">
-                    <div class="address_title_small">BIKO'S HIDEOUT</div>
+                    <div class="address_title_small">1010 GROUP'S HIDEOUT</div>
                     <div class="street_address">
                         <p>Jl. Haji Junaedi No 7A</p>
                         <p>Cipete Selatan, Jakarta Selatan</p>

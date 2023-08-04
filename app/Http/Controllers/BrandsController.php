@@ -62,6 +62,7 @@ class BrandsController extends Controller
             'close_outlet_day' => 'required',
             'open_outlet_time' => 'required',
             'close_outlet_time' => 'required',
+            'logo' => 'required|image|mimes:png,jpg,jpg',
             'phone' => 'required|min:8'
         ]);
 
@@ -72,11 +73,14 @@ class BrandsController extends Controller
 
         $image = $request->file('image');
         $thumbnail = $request->file('thumbnail');
+        $logo = $request->file('logo');
 
         // PHOTO
-        $image_name = time() . 'user-' . $request->name  . '.' . $image->getClientOriginalExtension();
+        $logo_name = time() . 'logo-' . $request->name  . '.' . $logo->getClientOriginalExtension();
+        Storage::putFileAs('public/uploads/logo/', $logo, $logo_name);
+        $image_name = time() . 'image-' . $request->name  . '.' . $image->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/image/', $image, $image_name);
-        $thumbnail_name = time() . 'user-' . $request->name  . '.' . $thumbnail->getClientOriginalExtension();
+        $thumbnail_name = time() . 'thumbnail-' . $request->name  . '.' . $thumbnail->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/thumbnail/', $thumbnail, $thumbnail_name);
 
         $brand = new Brands();
@@ -88,6 +92,7 @@ class BrandsController extends Controller
         $brand->open_outlet_time = $request->open_outlet_time;
         $brand->close_outlet_time = $request->close_outlet_time;
         $brand->phone = $request->phone;
+        $brand->logo = $logo_name;
         $brand->instagram = $request->instagram;
         $brand->save();
 
@@ -116,6 +121,47 @@ class BrandsController extends Controller
 
     public function update(Request $request)
     {
+        if (!empty($request->logo)) {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'id' => 'required',
+                'description' => 'required',
+                'instagram' => 'required',
+                'address' => 'required',
+                'open_outlet_day' => 'required',
+                'close_outlet_day' => 'required',
+                'open_outlet_time' => 'required',
+                'close_outlet_time' => 'required',
+                'logo' => 'required|image|mimes:png,jpg,jpg',
+                'phone' => 'required|min:8'
+            ]);
+
+            if ($validator->fails()) {
+                Alert::success('Failed', $validator->messages()->all());
+                return redirect()->route('admin.brand.index')->withInput();
+            }
+
+            $logo = $request->file('logo');
+
+            $logo_name = time() . 'logo-' . $request->name  . '.' . $logo->getClientOriginalExtension();
+            Storage::putFileAs('public/uploads/logo/', $logo, $logo_name);
+
+            $brand = Brands::findOrFail($request->id);
+            // $brand->update($request->all());
+            $brand->name = $request->name;
+            $brand->description = $request->description;
+            $brand->instagram = $request->instagram;
+            $brand->address = $request->address;
+            $brand->open_outlet_day = $request->open_outlet_day;
+            $brand->close_outlet_day = $request->close_outlet_day;
+            $brand->open_outlet_time = $request->open_outlet_time;
+            $brand->close_outlet_time = $request->close_outlet_time;
+            $brand->logo = $logo_name;
+            $brand->phone = $request->phone;
+            $brand->update();
+            Alert::toast('Successfully Update Outlet', 'success');
+            return redirect()->route('admin.brand.index');
+        }
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'id' => 'required',

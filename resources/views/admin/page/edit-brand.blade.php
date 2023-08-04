@@ -14,7 +14,7 @@
     @php
         // dd($brand->open_outlet_day);
     @endphp
-    <form action="{{ route('admin.brand.update') }}" method="post">
+    <form action="{{ route('admin.brand.update') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group mb-3">
             <label for="basicInput">Name</label>
@@ -34,6 +34,10 @@
         <div class="form-group mb-3">
             <label for="basicInput">Address</label>
             <input type="text" class="form-control mt-3" id="basicInput" name="address" value="{{ $brand->address }}">
+        </div>
+        <div class="form-group mb-3">
+            <label for="basicInput">Logo</label>
+            <input type="file" lass="form-control mt-3" id="basicInput" name="logo">
         </div>
         <div class="form-group">
             <label for="">Tanggal</label>

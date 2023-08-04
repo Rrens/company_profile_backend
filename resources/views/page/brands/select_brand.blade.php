@@ -40,7 +40,7 @@
     <div class="sections_wrapper onbrand">
         <section class="brand_top_logo slider_section">
             <div class="__logo" style="max-width: 500; max-height: 500;">
-                <img class="" src="https://biko-group.com/files/2019/03/05/5c7e3b23f3999343888776.svg">
+                <img class="" src="{{ empty($data->logo) ? '-' : asset('storage/uploads/logo/' . $data->logo) }}">
             </div>
             <div class="__logo_black" style="max-width: 500; max-height: 500;">
                 <img class="" src="">
