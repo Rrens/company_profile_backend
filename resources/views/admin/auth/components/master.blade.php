@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main/app.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/pages/auth.css') }}">
     <link rel="shortcut icon" href="http://reztopia.my.id:8000/assets/images/logo/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('admin/images/logo/favicon.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}" type="image/png">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
 
         <div id="auth-left">
             <div class="auth-logo">
-                <a href=""><img src="{{ asset('admin/images/logo/logo.svg') }}" alt="Logo"></a>
+                <a href=""><img src="{{ asset('assets/img/logo.png') }}" alt="Logo"></a>
             </div>
 
             @yield('container')

@@ -34,7 +34,8 @@
             </div>
         </section>
 
-        @include('admin.components.footer')
+        @include('components.footer')
+        {{-- @include('admin.components.footer') --}}
 
     </div>
 @endsection

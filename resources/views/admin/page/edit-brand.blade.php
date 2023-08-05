@@ -11,9 +11,6 @@
             </div>
         </div>
     </div>
-    @php
-        // dd($brand->open_outlet_day);
-    @endphp
     <form action="{{ route('admin.brand.update') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group mb-3">

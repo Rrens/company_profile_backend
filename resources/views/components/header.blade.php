@@ -3,7 +3,7 @@
         <div class="menu_btn"><span></span> <span></span> <span></span></div>
     </div>
     <a href="{{ route('home') }}">
-        <img src="{{ asset('assets/img/logo.png') }}" id="header_logo" alt="">
+        <img src="{{ asset('assets/img/logo-1.png') }}" id="header_logo" alt="">
     </a>
     <a href="{{ route('home') }}"><svg id="header_logo_mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
             <title>1010 GROUP Logo</title>
@@ -22,3 +22,18 @@
         </svg></a>
     <div class="header_text"></div>
 </header>
+
+@push('scripts')
+    <script>
+        function changeImageOnScroll() {
+            const scrollImage = document.getElementById("header_logo");
+            const changePosition = 50;
+            if (window.scrollY >= changePosition) {
+                scrollImage.src = "{{ asset('assets/img/logo-2.png') }}";
+            } else {
+                scrollImage.src = "{{ asset('assets/img/logo-1.png') }}";
+            }
+        }
+        window.addEventListener("scroll", changeImageOnScroll);
+    </script>
+@endpush

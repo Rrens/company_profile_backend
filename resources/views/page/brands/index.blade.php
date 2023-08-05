@@ -6,9 +6,8 @@
         <section class="title_text header_padding bottom_border">
             <div class="_wrapper title_style">ALL THE BRANDS WE HAVE</div>
         </section>
-        <section class="brand_sliders collapse snap nbt checkposition dropdown__mobileonly no_arrow">
-            <div class="bs_collapse_head dropdown__trigger">OUTLETS <img
-                    src="{{ asset('assets/img/icon/apple-touch-icon.png') }}">
+        <section class="brand_sliders collapse snap nbt checkposition dropdown__mobileonly">
+            <div class="bs_collapse_head dropdown__trigger">OUTLETS <img src="{{ asset('assets/img/icon/arrow_down.svg') }}">
             </div>
             <div class="brand_slider_wrapper dragscroll dropdown__wrapper">
                 @foreach ($data as $item)
@@ -52,7 +51,7 @@
                                     href="https://www.instagram.com/{{ $item->instagram }}/">{{ '@' . $item->instagram }}</a>
                             </div>
                         </div>
-                        <a href="https://wa.me/{{ $item->instagram }}" class="btn_rsvp">RSVP</a>
+                        <a href="https://wa.me/{{ $item->phone }}" class="btn_rsvp">RSVP</a>
                     </div>
                 </section>
             @endforeach

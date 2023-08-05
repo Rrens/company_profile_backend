@@ -10,9 +10,7 @@
                 </g>
             </svg></div>
         <div class="_wrapper dropdown__wrapper dragscroll">
-            @if (!empty($happening->image))
-                <span>HAPPENINGS</span>
-            @endif
+            <span>HAPPENINGS</span>
             <span>GALLERY</span>
             @if (!empty($happening->image))
                 <span>MENU</span>
@@ -48,12 +46,12 @@
             <div class="scrolldown">
             </div>
             <div class="slider_wrapper">
-                @foreach ($thumbnail as $item)
+                @foreach ($galery as $item)
                     <div class="slider_each" color="white">
                         <img class="slider_img"
-                            src="{{ empty($item->image) ? '-' : asset('storage/uploads/thumbnail/' . $item->image) }}">
+                            src="{{ empty($item->image) ? '-' : asset('storage/uploads/image/' . $item->image) }}">
                         <img class="slider_img mobile"
-                            src="{{ empty($item->image) ? '-' : asset('storage/uploads/thumbnail/' . $item->image) }}">
+                            src="{{ empty($item->image) ? '-' : asset('storage/uploads/image/' . $item->image) }}">
                     </div>
                 @endforeach
 
@@ -76,8 +74,13 @@
                         <img class="poster_img progressive__load"
                             data-src="{{ empty($happening->image) ? '-' : asset('storage/uploads/happening/' . $happening->image) }}">
                     </span>
-
                 </div>
+            </section>
+        @else
+            <section id="happenings" class="brand_title getposition">
+                <div class="_wrapper">HAPPENINGS</div>
+            </section>
+            <section class="happenings_content bottom_border">
             </section>
         @endif
         <section id="gallery" class="brand_title getposition">
@@ -95,8 +98,8 @@
                 </svg></div>
             <div class="brand_gallery_btn right"><svg class="nav_arrow" width="25px" height="52px" viewBox="0 0 25 52"
                     version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g fill="none" fill-rule="evenodd" transform="translate(-26.000000, -1538.000000)" stroke="#000000"
-                        stroke-width="2" stroke-linecap="round">
+                    <g fill="none" fill-rule="evenodd" transform="translate(-26.000000, -1538.000000)"
+                        stroke="#000000" stroke-width="2" stroke-linecap="round">
                         <polyline id="Path-2"
                             transform="translate(39.000000, 1564.111111) rotate(90.000000) translate(-39.000000, -1564.111111) "
                             points="14 1553 39.2937672 1575.22222 64 1553.51619"></polyline>
@@ -156,7 +159,7 @@
                         href="https://www.instagram.com/{{ $data->instagram }}/">{{ '@' . $data->instagram }}</a>
                 </div>
             </div>
-            <a href="https://wa.me/{{ $data->instagram }}" class="btn_rsvp">RSVP</a>
+            <a href="https://wa.me/{{ $data->phone }}" class="btn_rsvp">RSVP</a>
         </div>
 
     </section>

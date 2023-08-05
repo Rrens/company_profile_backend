@@ -7,7 +7,7 @@
     <title>1010 GROUP - @yield('title')</title>
 
     <link rel="preload" href="{{ asset('assets/css/style.css') }}" as="style">
-    <link rel="preload" href="{{ asset('assets/script/app.js') }}" as="script">
+    <link rel="preload" href="{{ asset('assets/script/load.js') }}" as="script">
     <link rel="preload" href="{{ asset('assets/script/app.js') }}" as="script">
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
