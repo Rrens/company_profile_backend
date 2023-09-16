@@ -96,16 +96,16 @@
                             </textarea>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Instagram</label>
+                            <label for="basicInput">Link URL</label>
                             <input type="text" class="form-control mt-3" id="basicInput" name="instagram"
                                 value="{{ old('instagram') }}">
                         </div>
-                        <div class="form-group mb-3">
+                        {{-- <div class="form-group mb-3">
                             <label for="basicInput">Address</label>
                             <input type="text" class="form-control mt-3" id="basicInput" name="address"
                                 value="{{ old('address') }}">
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+                        {{-- <div class="form-group">
                             <label for="">Tanggal</label>
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex justify-content-center">
@@ -200,7 +200,7 @@
                             <label for="basicInput">Phone</label>
                             <input type="number" class="form-control mt-3" id="basicInput" name="phone"
                                 value="{{ old('phone') }}">
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
@@ -259,20 +259,23 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Description</label>
-                            <textarea class="form-control mt-3" style="color: black" readonly>{{ $item->description }}
-                            </textarea>
+                            {{-- <textarea class="form-control mt-3" style="color: black" readonly>{{ $item->description }}
+                            </textarea> --}}
+                            <div class="form-control mt-3">
+                                {!! $item->description !!}
+                            </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Instagram</label>
+                            <label for="basicInput">Link URL</label>
                             <input type="text" class="form-control mt-3" id="basicInput" readonly
                                 value="{{ $item->instagram }}">
                         </div>
-                        <div class="form-group mb-3">
+                        {{-- <div class="form-group mb-3">
                             <label for="basicInput">Address</label>
                             <input type="text" class="form-control mt-3" id="basicInput" readonly
                                 value="{{ $item->address }}">
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+                        {{-- <div class="form-group">
                             <label for="">Tanggal</label>
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex justify-content-center">
@@ -284,12 +287,12 @@
                                     <input type="button" value="{{ $item->close_outlet_time }}" readonly>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group mb-3">
+                        </div> --}}
+                        {{-- <div class="form-group mb-3">
                             <label for="basicInput">Phone</label>
                             <input type="number" class="form-control mt-3" id="basicInput" value="{{ $item->phone }}"
                                 readonly>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">

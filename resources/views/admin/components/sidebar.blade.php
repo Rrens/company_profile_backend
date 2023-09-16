@@ -46,30 +46,30 @@
                         <span>Header</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ $active == 'event' ? 'active' : '' }}">
+                {{-- <li class="sidebar-item {{ $active == 'event' ? 'active' : '' }}">
                     <a href="{{ route('admin.event.index') }}" class="sidebar-link">
                         <i class="bi bi-calendar-event-fill"></i>
                         <span>Event</span>
                     </a>
-                </li>
-                <li class="sidebar-item {{ $active == 'career' ? 'active' : '' }}">
+                </li> --}}
+                {{-- <li class="sidebar-item {{ $active == 'career' ? 'active' : '' }}">
                     <a href="{{ route('admin.career.index') }}" class="sidebar-link">
                         <i class="bi bi-people-fill"></i>
                         <span>Career</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-item {{ $active == 'menu' ? 'active' : '' }}">
                     <a href="{{ route('admin.menu.index') }}" class="sidebar-link">
                         <i class="bi bi-menu-app-fill"></i>
                         <span>Menu</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ $active == 'happening' ? 'active' : '' }}">
+                {{-- <li class="sidebar-item {{ $active == 'happening' ? 'active' : '' }}">
                     <a href="{{ route('admin.happening.index') }}" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
                         <span>Happening</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-item ">
                     <a href="{{ route('logout') }}" class="sidebar-link">
                         <i class="bi bi-door-open-fill"></i>

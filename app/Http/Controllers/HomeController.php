@@ -11,10 +11,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $page = 'home';
+        $active = 'home';
         $brand = Brands::select('name', 'id', 'logo')->get();
-        $thumbnail = ImageHeaderBrand::first();
-        $image = ImageGaleryBrand::first();
-        return view('page.home.index', compact('page', 'brand', 'thumbnail', 'image'));
+        // $thumbnail = ImageHeaderBrand::first();
+        $thumbnail = ImageGaleryBrand::get();
+        // $image = ImageGaleryBrand::first();
+        return view('page.home.index', compact('active', 'brand', 'thumbnail'));
     }
 }

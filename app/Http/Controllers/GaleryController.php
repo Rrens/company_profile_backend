@@ -12,6 +12,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class GaleryController extends Controller
 {
+
+    public function viewUser()
+    {
+        $active = 'galery';
+        $brand = Brands::select('name', 'id', 'logo')->get();
+        $image = ImageGaleryBrand::all();
+        return view('page.galeries.index', compact('active', 'brand', 'image'));
+    }
+
     public function index()
     {
         $active = 'galery';
@@ -21,6 +30,7 @@ class GaleryController extends Controller
         $data = ImageGaleryBrand::with('brands')->get();
         return view('admin.page.galery.index', compact('data', 'brand', 'active'));
     }
+
 
     public function filter_outlet($name)
     {
@@ -96,6 +106,30 @@ class GaleryController extends Controller
         $image_galery->delete();
 
         Alert::toast('Successfully Delete Image', 'success');
+        return back();
+    }
+
+    public function uploadMultiple(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'images.*' => 'image|mimes:jpeg,png,jpg',
+        ]);
+
+        if ($validator->fails()) {
+            dd($validator->messages()->all());
+        }
+
+        $images = $request->file('images');
+        foreach ($images as $item) {
+            $image_name = sha1(time() . '_' . $item->getClientOriginalName()) . '.' . $item->getClientOriginalExtension();;
+            Storage::putFileAs('public/uploads/image/', $item, $image_name);
+
+            ImageGaleryBrand::create([
+                'image' => $image_name,
+                'status' => 1
+            ]);
+        }
+
         return back();
     }
 }

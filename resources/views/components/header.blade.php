@@ -1,39 +1,46 @@
-<header class="_transparent {{ !empty($page) ? ($page == 'brand_each' ? 'nbb' : '') : '' }}">
-    <div class="header_menu_btn_w anim_in">
-        <div class="menu_btn"><span></span> <span></span> <span></span></div>
+<div class="container-xxl position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark hero-body px-4 px-lg-5 py-3 py-lg-0">
+        <a href="{{ route('home') }}" class="navbar-brand p-0">
+            <img src="{{ asset('assets/img/logo1.png') }}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0 pe-4">
+                <a href="{{ route('home') }}" class="nav-item nav-link {{ $active == 'home' ? 'active' : '' }}">Home</a>
+                <a href="{{ route('about.index') }}"
+                    class="nav-item nav-link {{ $active == 'about' ? 'active' : '' }}">About</a>
+                <a href="{{ route('establishment.index') }}"
+                    class="nav-item nav-link {{ $active == 'establishment' ? 'active' : '' }}">Establishments</a>
+                <a href="{{ route('galeries.viewUser') }}"
+                    class="nav-item nav-link {{ $active == 'galery' ? 'active' : '' }}">Galleries</a>
+                <a href="{{ route('contact.index') }}" class="nav-item nav-link"
+                    {{ $active == 'contact' ? 'active' : '' }}>Contact</a>
+                <a href="{{ route('reserve.index') }}"
+                    class="nav-item nav-link {{ $active == 'reserve' ? 'active' : '' }}">Reserve Now</a>
+            </div>
+        </div>
+    </nav>
+    <div
+        class="container-xxl py-4 hero-body
+        @if ($active == 'home') hero-header
+        @elseif ($active == 'about')
+        hero-header-about
+        @elseif ($active == 'establishment')
+        hero-header-establish
+        @elseif ($active == 'contact')
+        hero-header-contact
+        @elseif ($active == 'reserve')
+        res-header
+        @elseif ($active == 'galery')
+        @else
+        hero-header-{{ $data->name }} @endif">
+        <div class="container my-5 py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                </div>
+            </div>
+        </div>
     </div>
-    <a href="{{ route('home') }}">
-        <img src="{{ asset('assets/img/logo-1.png') }}" id="header_logo" alt="">
-    </a>
-    <a href="{{ route('home') }}"><svg id="header_logo_mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-            <title>1010 GROUP Logo</title>
-            <g transform="translate(1 .25)">
-                <path d="M19.6 21.7c0 .8.6 1.4 1.4 1.4s1.4-.6 1.4-1.4c0-.8-.6-1.4-1.4-1.4s-1.4.7-1.4 1.4" />
-                <g transform="translate(.592 .592)">
-                    <path d="M28.4 15.2h-16v-16h16v16zm-14-2.1h12v-12h-12v12z" />
-                    <path d="M14.4 29.2h-16v-16h16v16zm-14-2.1h12v-12H.4v12z" />
-                    <path d="M28.4 29.2h-16v-16h16v16zm-14-2.1h12v-12h-12v12z" />
-                    <path d="M19.4 0.2H21.4V14.2H19.4z" />
-                    <path d="M12.5 29L-1 22c-.3-.2-.5-.5-.5-.9s.2-.7.5-.9l13.5-7 .9 1.8-11.8 6.2 11.8 6.1-.9 1.7z" />
-                    <path d="M14.4 15.2h-16v-16h16v16zm-14-2.1h12v-12H.4v12z" />
-                </g>
-                <path d="M3.3 6.7H14V8.7H3.3z" />
-            </g>
-        </svg></a>
-    <div class="header_text"></div>
-</header>
-
-@push('scripts')
-    <script>
-        function changeImageOnScroll() {
-            const scrollImage = document.getElementById("header_logo");
-            const changePosition = 50;
-            if (window.scrollY >= changePosition) {
-                scrollImage.src = "{{ asset('assets/img/logo-2.png') }}";
-            } else {
-                scrollImage.src = "{{ asset('assets/img/logo-1.png') }}";
-            }
-        }
-        window.addEventListener("scroll", changeImageOnScroll);
-    </script>
-@endpush
+</div>

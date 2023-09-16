@@ -24,19 +24,19 @@
                             </textarea>
         </div>
         <div class="form-group mb-3">
-            <label for="basicInput">Instagram</label>
+            <label for="basicInput">Link URL</label>
             <input type="text" class="form-control mt-3" id="basicInput" name="instagram"
                 value="{{ $brand->instagram }}">
         </div>
-        <div class="form-group mb-3">
+        {{-- <div class="form-group mb-3">
             <label for="basicInput">Address</label>
             <input type="text" class="form-control mt-3" id="basicInput" name="address" value="{{ $brand->address }}">
-        </div>
+        </div> --}}
         <div class="form-group mb-3">
             <label for="basicInput">Logo</label>
             <input type="file" lass="form-control mt-3" id="basicInput" name="logo">
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="">Tanggal</label>
             <div class="d-flex justify-content-between">
                 <div class="d-flex justify-content-center">
@@ -127,7 +127,7 @@
             <label for="basicInput">Phone</label>
             <input type="number" class="form-control mt-3" id="basicInput" name="phone"
                 value="{{ $brand->phone }}">
-        </div>
+        </div> --}}
         <button type="submit" class="btn btn-warning mt-3">UPDATE</button>
     </form>
 

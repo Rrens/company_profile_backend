@@ -2,40 +2,42 @@
 @section('title', 'CONTACT')
 
 @section('container')
-    <div class="sections_wrapper ">
+    <div class="container-xxl py-5 hero-body">
+        <div id="contact" class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s hero-status">
+                <h1 class="mb-2" style="color: white; font-weight: normal; font-family: 'Inter Medium', sans-serif;">CONTACT
+                </h1>
 
+                <form action="{{ route('admin.email.index') }}" method="POST">
+                    @csrf
+                    <label for="name"></label>
+                    <input type="text" id="name" name="name" placeholder="Name" style="width: 90%;">
 
-        <section class="title_text header_padding">
-            <div class="_wrapper title_style">HIT US UP, WE'LL REPLY<br />WHEN WE'RE SOBER.</div>
-        </section>
-        <section class="container_form _grow spaceBottom">
-            <div class="_form_wrapper">
-                <form id="contact-form" method="post" class="_wrapper contact_style">
-                    <input type="hidden" name="email" id="email">
-                    <input name="_name" class="name" placeholder="Name" type="text">
-                    <input name="_email" class="email" placeholder="E-mail" type="email">
-                    <input name="_subject" class="subject" placeholder="Subject" type="text">
-                    <textarea name="_content" class="content" placeholder="What's up?"></textarea>
-                    <input class="send" type="submit" name="send" id="btn-send-contact" value="SEND">
-                    <div class="error_wrapper hidden">
-                        Error Message
-                    </div>
+                    <label for="email"></label>
+                    <input type="text" id="email" name="email" placeholder="Email" style="width: 90%;">
+
+                    <label for="subject"></label>
+                    <input type="text" id="subject" name="subject" placeholder="Subject" style="width: 90%;">
+
+                    <label for="message"></label>
+                    <textarea id="message" name="message" placeholder="Message" style="width: 90%; height:200px;"></textarea>
+
+                    <input type="submit" class="transparent-button" value="Submit">
+
                 </form>
-
-                <div class="_wrapper address">
-                    <div class="address_title_small">1010 GROUP'S HIDEOUT</div>
-                    <div class="street_address">
-                        <p>Jl. Haji Junaedi No 7A</p>
-                        <p>Cipete Selatan, Jakarta Selatan</p>
-                        <p>021 7590 7744</p>
-                    </div>
-                </div>
-
             </div>
-        </section>
+        </div>
+    </div>
 
-        @include('components.footer')
-        {{-- @include('admin.components.footer') --}}
+    <!-- establish status End -->
 
+
+    <div class="container-xxl py-5 hero-body">
+        <div class="container ">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s hero-status">
+                <h2 class="hero-status" style="color: white;">RESERVE NOW</h2>
+                @include('components.image_container_2')
+            </div>
+        </div>
     </div>
 @endsection

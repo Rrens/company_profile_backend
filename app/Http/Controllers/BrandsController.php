@@ -24,15 +24,15 @@ class BrandsController extends Controller
 
     public function select_brand($name)
     {
-        $page = 'brand_each';
+        $active = $name;
         $data = Brands::where('name', $name)->first();
-        $list_brand = Brands::select('name')->get();
-        $thumbnail = ImageHeaderBrand::where('id_brand', $data->id)->where('status', 1)->get();
+        $brand = Brands::select('name', 'id', 'logo')->get();
+        $header = ImageHeaderBrand::where('id_brand', $data->id)->where('status', 1)->first();
         $galery = ImageGaleryBrand::where('id_brand', $data->id)->where('status', 1)->get();
         $happening = Happening::where('id_brand', $data->id)->first();
         $menu = Menu::where('id_brand', $data->id)->first();
-        // dd($data);
-        return view('page.brands.select_brand', compact('page', 'list_brand', 'data', 'galery', 'thumbnail', 'happening', 'menu'));
+        // dd($header->image);
+        return view('page.brands.select_brand', compact('active', 'brand', 'data', 'galery', 'header', 'happening', 'menu'));
     }
 
     public function brand_admin()
@@ -57,13 +57,13 @@ class BrandsController extends Controller
             'image' => 'required|image|mimes:png,jpg,jpg',
             'description' => 'required',
             'instagram' => 'required',
-            'address' => 'required',
-            'open_outlet_day' => 'required',
-            'close_outlet_day' => 'required',
-            'open_outlet_time' => 'required',
-            'close_outlet_time' => 'required',
+            // 'address' => 'required',
+            // 'open_outlet_day' => 'required',
+            // 'close_outlet_day' => 'required',
+            // 'open_outlet_time' => 'required',
+            // 'close_outlet_time' => 'required',
             'logo' => 'required|image|mimes:png,jpg,jpg',
-            'phone' => 'required|min:8'
+            // 'phone' => 'required|min:8'
         ]);
 
         if ($validator->fails()) {
@@ -127,13 +127,13 @@ class BrandsController extends Controller
                 'id' => 'required',
                 'description' => 'required',
                 'instagram' => 'required',
-                'address' => 'required',
-                'open_outlet_day' => 'required',
-                'close_outlet_day' => 'required',
-                'open_outlet_time' => 'required',
-                'close_outlet_time' => 'required',
+                // 'address' => 'required',
+                // 'open_outlet_day' => 'required',
+                // 'close_outlet_day' => 'required',
+                // 'open_outlet_time' => 'required',
+                // 'close_outlet_time' => 'required',
                 'logo' => 'required|image|mimes:png,jpg,jpg',
-                'phone' => 'required|min:8'
+                // 'phone' => 'required|min:8'
             ]);
 
             if ($validator->fails()) {
@@ -167,12 +167,12 @@ class BrandsController extends Controller
             'id' => 'required',
             'description' => 'required',
             'instagram' => 'required',
-            'address' => 'required',
-            'open_outlet_day' => 'required',
-            'close_outlet_day' => 'required',
-            'open_outlet_time' => 'required',
-            'close_outlet_time' => 'required',
-            'phone' => 'required|min:8'
+            // 'address' => 'required',
+            // 'open_outlet_day' => 'required',
+            // 'close_outlet_day' => 'required',
+            // 'open_outlet_time' => 'required',
+            // 'close_outlet_time' => 'required',
+            // 'phone' => 'required|min:8'
         ]);
 
         if ($validator->fails()) {
