@@ -40,7 +40,7 @@
                                                         data-bs-target="#modalDetailOutlet{{ $item->id }}">
                                                         <img src="{{ empty($thumbnail->where('id_brand', $item->id)->first()['image']) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)->first()['image']) }}"
                                                             class="card-img-top img-fluid"
-                                                            alt="{{ $thumbnail->where('id_brand', $item->id)->first()['image'] }}"
+                                                            alt="{{ empty($thumbnail->where('id_brand', $item->id)->first()['image']) ? '' : $thumbnail->where('id_brand', $item->id)->first()['image'] }}"
                                                             style="width: 350px; height: 200px">
                                                         <div class="card-body">
                                                             <h5 class="card-title">{{ $item->name }}</h5>
@@ -96,111 +96,15 @@
                             </textarea>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Link URL</label>
+                            <label for="basicInput">Link Learn More</label>
                             <input type="text" class="form-control mt-3" id="basicInput" name="instagram"
                                 value="{{ old('instagram') }}">
                         </div>
-                        {{-- <div class="form-group mb-3">
-                            <label for="basicInput">Address</label>
-                            <input type="text" class="form-control mt-3" id="basicInput" name="address"
-                                value="{{ old('address') }}">
-                        </div> --}}
-                        {{-- <div class="form-group">
-                            <label for="">Tanggal</label>
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex justify-content-center">
-                                    <fieldset class="form-group">
-                                        <select class="form-select" id="basicSelect" name="open_outlet_day">
-                                            <option selected hidden>Pilih Hari Mulai</option>
-                                            <option value="sun">Sun</option>
-                                            <option value="mon">Mon</option>
-                                            <option value="tue">Tue</option>
-                                            <option value="wes">Wes</option>
-                                            <option value="thur">Thur</option>
-                                            <option value="fri">Fri</option>
-                                            <option value="sat">Sat</option>
-                                        </select>
-                                    </fieldset>
-                                    <fieldset class="form-group">
-                                        <select class="form-select" id="basicSelect" name="open_outlet_time">
-                                            <option selected hidden>Pilih Waktu Mulai</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                            <option value="24">24</option>
-                                        </select>
-                                    </fieldset>
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <fieldset class="form-group">
-                                        <select class="form-select" id="basicSelect" name="close_outlet_day">
-                                            <option selected hidden>Pilih Hari Selesai</option>
-                                            <option value="sun">Sun</option>
-                                            <option value="mon">Mon</option>
-                                            <option value="tue">Tue</option>
-                                            <option value="wes">Wes</option>
-                                            <option value="thur">Thur</option>
-                                            <option value="fri">Fri</option>
-                                            <option value="sat">Sat</option>
-                                        </select>
-                                    </fieldset>
-                                    <fieldset class="form-group">
-                                        <select class="form-select" id="basicSelect" name="close_outlet_time">
-                                            <option selected hidden>Pilih Waktu Selesai</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                            <option value="24">24</option>
-                                        </select>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Phone</label>
-                            <input type="number" class="form-control mt-3" id="basicInput" name="phone"
-                                value="{{ old('phone') }}">
-                        </div> --}}
+                            <label for="basicInput">Link Footer</label>
+                            <input type="text" class="form-control mt-3" id="basicInput" name="link_learn_more"
+                                value="{{ old('link_learn_more') }}">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
@@ -217,7 +121,6 @@
         </div>
     </div>
 
-    {{-- MODAL Detail Outlet --}}
     @foreach ($brand as $item)
         <div class="modal fade" id="modalDetailOutlet{{ $item->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -248,51 +151,31 @@
                             <label for="basicInput">Thumbnail</label>
                             <img src="{{ empty($thumbnail->where('id_brand', $item->id)->first()['image']) ? '-' : asset('storage/uploads/thumbnail/' . $thumbnail->where('id_brand', $item->id)->first()['image']) }}"
                                 class="card-img-top img-fluid mt-3"
-                                alt="{{ $thumbnail->where('id_brand', $item->id)->first()['image'] }}">
+                                alt="{{ empty($thumbnail->where('id_brand', $item->id)->first()['image']) ? '' : $thumbnail->where('id_brand', $item->id)->first()['image'] }}">
                             {{ empty($thumbnail[0]) ? '' : '' }}
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Image</label>
                             <img src="{{ empty($image->where('id_brand', $item->id)->first()['image']) ? '-' : asset('storage/uploads/image/' . $image->where('id_brand', $item->id)->first()['image']) }}"
                                 class="card-img-top img-fluid mt-3"
-                                alt="{{ $image->where('id_brand', $item->id)->first()['image'] }}">
+                                alt="{{ empty($image->where('id_brand', $item->id)->first()) ? "" : $image->where('id_brand', $item->id)->first()['image'] }}">
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Description</label>
-                            {{-- <textarea class="form-control mt-3" style="color: black" readonly>{{ $item->description }}
-                            </textarea> --}}
                             <div class="form-control mt-3">
                                 {!! $item->description !!}
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="basicInput">Link URL</label>
+                            <label for="basicInput">Link Learn More</label>
                             <input type="text" class="form-control mt-3" id="basicInput" readonly
                                 value="{{ $item->instagram }}">
                         </div>
-                        {{-- <div class="form-group mb-3">
-                            <label for="basicInput">Address</label>
-                            <input type="text" class="form-control mt-3" id="basicInput" readonly
-                                value="{{ $item->address }}">
-                        </div> --}}
-                        {{-- <div class="form-group">
-                            <label for="">Tanggal</label>
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex justify-content-center">
-                                    <input type="button" value="{{ $item->open_outlet_day }}" readonly>
-                                    <input type="button" value="{{ $item->open_outlet_time }}" readonly>
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <input type="button" value="{{ $item->close_outlet_day }}" readonly>
-                                    <input type="button" value="{{ $item->close_outlet_time }}" readonly>
-                                </div>
-                            </div>
-                        </div> --}}
-                        {{-- <div class="form-group mb-3">
-                            <label for="basicInput">Phone</label>
-                            <input type="number" class="form-control mt-3" id="basicInput" value="{{ $item->phone }}"
-                                readonly>
-                        </div> --}}
+                        <div class="form-group mb-3">
+                            <label for="basicInput">Link Footer</label>
+                            <input type="text" class="form-control mt-3" id="basicInput" name="link_learn_more"
+                                value="{{ $item->link_learn_more }}" readonly>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">

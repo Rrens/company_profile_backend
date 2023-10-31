@@ -15,6 +15,7 @@ use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ReserveController;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,10 +46,7 @@ Route::group(
         'middleware' => ['auth', 'role:admin,superadmin']
     ],
     function () {
-
-        Route::get('/upload-multiple', function () {
-            return view('admin.upload');
-        });
+        Route::get('/upload-multiple', [GaleryController::class, 'index_multiple_upload'])->name('upload_multiple.index');
 
         Route::post('upload-multiple', [GaleryController::class, 'uploadMultiple'])->name('upload_multiple');
 

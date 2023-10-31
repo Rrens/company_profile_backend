@@ -6,10 +6,11 @@
     <div class="container-xxl py-5 hero-body">
         <div class="container ">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s hero-status">
-                <h1 class="mb-2" style="color: white; font-weight: normal; font-family: 'Inter Medium', sans-serif;">
+                <h1 class="mb-2" style="color: white; font-weight: normal; font-family: 'Josefin Sans', sans-serif;">
                     ESTABLISHMENTS</h1>
-                <h6 class="mb-1 hero-status">We optimize quality with a blend of traditional cooking.</h6>
-                <h6 class="mb-1 hero-status">Focus on providing on unforgettable enjoyment of signature taste.</h6>
+                <h6 class="mb-1 hero-status">Our focus on delivering high quality products and providing unforgettable experiences for our customers.
+</h6>
+                <!--<h6 class="mb-1 hero-status">Focus on providing on unforgettable enjoyment of signature taste.</h6>-->
 
             </div>
         </div>

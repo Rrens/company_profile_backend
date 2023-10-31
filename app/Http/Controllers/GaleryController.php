@@ -16,8 +16,8 @@ class GaleryController extends Controller
     public function viewUser()
     {
         $active = 'galery';
-        $brand = Brands::select('name', 'id', 'logo')->get();
-        $image = ImageGaleryBrand::all();
+        $brand = Brands::select('name', 'id', 'logo')->where('name', '!=', 'GALERY')->get();
+        $image = ImageGaleryBrand::where('id_brand', Brands::where('name', 'GALERY')->first()['id'])->get();
         return view('page.galeries.index', compact('active', 'brand', 'image'));
     }
 
@@ -27,7 +27,7 @@ class GaleryController extends Controller
         $brand = Brands::select('id', 'name')
             ->orderBy('created_at')
             ->get();
-        $data = ImageGaleryBrand::with('brands')->get();
+        $data = ImageGaleryBrand::with('brands')->paginate(5);
         return view('admin.page.galery.index', compact('data', 'brand', 'active'));
     }
 
@@ -44,7 +44,7 @@ class GaleryController extends Controller
             ->join('brands as b', 'b.id', '=', 'img.id_brand')
             ->where('b.name', $name)
             ->orderBy('img.created_at')
-            ->get();
+            ->paginate(5);
 
         return view('admin.page.galery.filter', compact('data', 'brand', 'brand_for_filter', 'for_data', 'active'));
     }
@@ -65,30 +65,28 @@ class GaleryController extends Controller
 
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
-            'image' => 'required|image|mimes:png,jpg,jpg',
             'outlet' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         if ($validator->fails()) {
-            if ($validator->fails()) {
-                Alert::error('Failed', $validator->messages()->all());
-                return back()->withInput();
-            }
+            dd($validator->messages()->all());
         }
 
-        $image = $request->file('image');
-        $brand = Brands::where('id', $request->outlet)->select('name')->first();
-        // PHOTO
-        $image_name = time() . 'user-' . $brand->name  . '.' . $image->getClientOriginalExtension();
-        Storage::putFileAs('public/uploads/image/', $image, $image_name);
+        $images = $request->file('images');
+        foreach ($images as $item) {
+            $image_name = sha1(time() . '_' . $item->getClientOriginalName()) . '.' . $item->getClientOriginalExtension();
+            Storage::putFileAs('public/uploads/image/', $item, $image_name);
 
-        $image_galery = new ImageGaleryBrand();
-        $image_galery->id_brand = $request->outlet;
-        $image_galery->image = $image_name;
-        $image_galery->status = 1;
-        $image_galery->save();
-        // dd($image_galery, $image_galery->save());
+            ImageGaleryBrand::create([
+                'image' => $image_name,
+                'id_brand' => $request->outlet,
+                'status' => 1
+            ]);
+        }
+
         Alert::toast('Successfully Add Image', 'success');
         return back();
     }
@@ -109,9 +107,17 @@ class GaleryController extends Controller
         return back();
     }
 
+    public function index_multiple_upload()
+    {
+        $brand = Brands::get();
+        // dd($brand);
+        return view('admin.upload', compact('brand'));
+    }
+
     public function uploadMultiple(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'brand' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg',
         ]);
 
@@ -121,11 +127,12 @@ class GaleryController extends Controller
 
         $images = $request->file('images');
         foreach ($images as $item) {
-            $image_name = sha1(time() . '_' . $item->getClientOriginalName()) . '.' . $item->getClientOriginalExtension();;
+            $image_name = sha1(time() . '_' . $item->getClientOriginalName()) . '.' . $item->getClientOriginalExtension();
             Storage::putFileAs('public/uploads/image/', $item, $image_name);
 
             ImageGaleryBrand::create([
                 'image' => $image_name,
+                'id_brand' => $request->brand,
                 'status' => 1
             ]);
         }

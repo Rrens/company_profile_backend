@@ -24,7 +24,7 @@
     </nav>
     <div
         class="container-xxl py-4 hero-body
-        @if ($active == 'home') hero-header
+        @if ($active == 'home') hero-header-home
         @elseif ($active == 'about')
         hero-header-about
         @elseif ($active == 'establishment')
@@ -32,10 +32,10 @@
         @elseif ($active == 'contact')
         hero-header-contact
         @elseif ($active == 'reserve')
-        res-header
+        sirloin-header
         @elseif ($active == 'galery')
         @else
-        hero-header-{{ $data->name }} @endif">
+        hero-header-{{ $data->id }} @endif">
         <div class="container my-5 py-5">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 text-center text-lg-start">

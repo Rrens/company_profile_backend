@@ -12,8 +12,8 @@ class EstablishmentController extends Controller
     public function index()
     {
         $active = 'establishment';
-        $brand = Brands::select('name', 'id', 'logo')->get();
-        $thumbnail = ImageGaleryBrand::get();
+        $brand = Brands::select('name', 'id', 'logo')->where('name', '!=', 'GALERY')->get();
+        $thumbnail = ImageHeaderBrand::get();
         return view('page.establishments.index', compact('active', 'brand', 'thumbnail'));
     }
 }

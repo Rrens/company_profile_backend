@@ -37,11 +37,11 @@ class MenuController extends Controller
         $name_brand = Brands::select('name')->where('id', $request->id_brand)->first();
 
         $menu_before = $request->file('food');
-        $food = time() . 'menu-' . $name_brand->name  . '.' . $menu_before->getClientOriginalExtension();
+        $food = sha1(time() . 'menu-' . $name_brand->name)  . '.' . $menu_before->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/menu/', $menu_before, $food);
 
         $drink_before = $request->file('drink');
-        $drink = time() . 'drink-' . $name_brand->name  . '.' . $drink_before->getClientOriginalExtension();
+        $drink = sha1(time() . 'drink-' . $name_brand->name)  . '.' . $drink_before->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/drink/', $drink_before, $drink);
 
         $menu = new Menu();
@@ -78,11 +78,11 @@ class MenuController extends Controller
             $name_brand = Brands::select('name')->where('id', $request->id_brand)->first();
 
             $menu_before = $request->file('food');
-            $food = time() . 'menu-' . $name_brand->name  . '.' . $menu_before->getClientOriginalExtension();
+            $food = sha1(time() . 'menu-' . $name_brand->name)  . '.' . $menu_before->getClientOriginalExtension();
             Storage::putFileAs('public/uploads/menu/', $menu_before, $food);
 
             $drink_before = $request->file('drink');
-            $drink = time() . 'drink-' . $name_brand->name  . '.' . $drink_before->getClientOriginalExtension();
+            $drink = sha1(time() . 'drink-' . $name_brand->name)  . '.' . $drink_before->getClientOriginalExtension();
             Storage::putFileAs('public/uploads/drink/', $drink_before, $drink);
 
 
@@ -106,7 +106,7 @@ class MenuController extends Controller
             $name_brand = Brands::select('name')->where('id', $request->id_brand)->first();
 
             $menu_before = $request->file('food');
-            $food = time() . 'menu-' . $name_brand->name  . '.' . $menu_before->getClientOriginalExtension();
+            $food = sha1(time() . 'menu-' . $name_brand->name)  . '.' . $menu_before->getClientOriginalExtension();
             Storage::putFileAs('public/uploads/menu/', $menu_before, $food);
 
             $menu = Menu::findOrFail($request->id);
@@ -127,7 +127,7 @@ class MenuController extends Controller
 
             $name_brand = Brands::select('name')->where('id', $request->id_brand)->first();
             $drink_before = $request->file('drink');
-            $drink = time() . 'drink-' . $name_brand->name  . '.' . $drink_before->getClientOriginalExtension();
+            $drink = sha1(time() . 'drink-' . $name_brand->name)  . '.' . $drink_before->getClientOriginalExtension();
             Storage::putFileAs('public/uploads/drink/', $drink_before, $drink);
 
 

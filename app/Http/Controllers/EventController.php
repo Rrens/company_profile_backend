@@ -49,7 +49,7 @@ class EventController extends Controller
         $image = $request->file('image');
 
         // PHOTO
-        $image_name = time() . 'event-' . $request->name  . '.' . $image->getClientOriginalExtension();
+        $image_name = sha1(time() . 'event-' . $request->name)  . '.' . $image->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/event/', $image, $image_name);
 
         $event = new Events();
@@ -89,7 +89,7 @@ class EventController extends Controller
             $image = $request->file('image');
 
             // PHOTO
-            $image_name = time() . 'event-' . $request->name  . '.' . $image->getClientOriginalExtension();
+            $image_name = sha1(time() . 'event-' . $request->name)  . '.' . $image->getClientOriginalExtension();
             Storage::putFileAs('public/uploads/event/', $image, $image_name);
 
             $event = Events::findOrFail($request->id);

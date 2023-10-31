@@ -15,7 +15,7 @@ class ContactController extends Controller
     public function index()
     {
         $active = 'contact';
-        $brand = Brands::select('name', 'id', 'logo')->get();
+        $brand = Brands::select('name', 'id', 'logo', 'instagram', 'link_learn_more')->where('name', '!=', 'GALERY')->get();
         return view('page.contact.index', compact('active', 'brand'));
     }
 
@@ -32,6 +32,19 @@ class ContactController extends Controller
             Alert::error('Failed', $validator->messages()->all());
             return redirect()->route('admin.brand.index')->withInput();
         }
+        // Mail::send(
+        //     'email',
+        //     [
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'content' => $request->content,
+        //     ],
+        //     function ($message) {
+        //         $message->from($request->email);
+        //         $message->to('admin@1010-group.com');
+        //         $subject->($request->subject);
+        //     }
+        // );
 
         $data = [
             'subject' => $request->subject,

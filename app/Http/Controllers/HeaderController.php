@@ -71,7 +71,7 @@ class HeaderController extends Controller
         $image = $request->file('image');
         $brand = Brands::where('id', $request->outlet)->select('name')->first();
         // PHOTO
-        $image_name = time() . 'user-' . $brand->name  . '.' . $image->getClientOriginalExtension();
+        $image_name = sha1(time() . 'user-' . $brand->name)  . '.' . $image->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/thumbnail/', $image, $image_name);
 
         $image_galery = new ImageHeaderBrand();

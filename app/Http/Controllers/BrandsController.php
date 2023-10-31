@@ -17,7 +17,7 @@ class BrandsController extends Controller
 {
     public function index()
     {
-        $data = Brands::all();
+        $brand = Brands::select('name', 'id', 'logo', 'instagram', 'link_learn_more')->where('name', '!=', 'GALERY')->get();
         $thumbnail = ImageHeaderBrand::where('status', 1)->get();
         return view('page.brands.index', compact('data', 'thumbnail'));
     }
@@ -26,7 +26,7 @@ class BrandsController extends Controller
     {
         $active = $name;
         $data = Brands::where('name', $name)->first();
-        $brand = Brands::select('name', 'id', 'logo')->get();
+        $brand = Brands::select('name', 'id', 'logo', 'instagram', 'link_learn_more')->where('name', '!=', 'GALERY')->get();
         $header = ImageHeaderBrand::where('id_brand', $data->id)->where('status', 1)->first();
         $galery = ImageGaleryBrand::where('id_brand', $data->id)->where('status', 1)->get();
         $happening = Happening::where('id_brand', $data->id)->first();
@@ -37,10 +37,8 @@ class BrandsController extends Controller
 
     public function brand_admin()
     {
-        // dd(Auth::user()->role);
-
         $active = 'brands';
-        $brand = Brands::all();
+        $brand = Brands::where('name', '!=', 'GALERY')->get();
         $thumbnail = ImageHeaderBrand::get();
         $image = ImageGaleryBrand::get();
         // Brands::withTrashed()->restore();
@@ -57,13 +55,8 @@ class BrandsController extends Controller
             'image' => 'required|image|mimes:png,jpg,jpg',
             'description' => 'required',
             'instagram' => 'required',
-            // 'address' => 'required',
-            // 'open_outlet_day' => 'required',
-            // 'close_outlet_day' => 'required',
-            // 'open_outlet_time' => 'required',
-            // 'close_outlet_time' => 'required',
+            'link_learn_more' => 'required',
             'logo' => 'required|image|mimes:png,jpg,jpg',
-            // 'phone' => 'required|min:8'
         ]);
 
         if ($validator->fails()) {
@@ -76,11 +69,11 @@ class BrandsController extends Controller
         $logo = $request->file('logo');
 
         // PHOTO
-        $logo_name = time() . 'logo-' . $request->name  . '.' . $logo->getClientOriginalExtension();
+        $logo_name = sha1(time() . 'logo-' . $request->name)  . '.' . $logo->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/logo/', $logo, $logo_name);
-        $image_name = time() . 'image-' . $request->name  . '.' . $image->getClientOriginalExtension();
+        $image_name = sha1(time() . 'image-' . $request->name)  . '.' . $image->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/image/', $image, $image_name);
-        $thumbnail_name = time() . 'thumbnail-' . $request->name  . '.' . $thumbnail->getClientOriginalExtension();
+        $thumbnail_name = sha1(time() . 'thumbnail-' . $request->name)  . '.' . $thumbnail->getClientOriginalExtension();
         Storage::putFileAs('public/uploads/thumbnail/', $thumbnail, $thumbnail_name);
 
         $brand = new Brands();
@@ -94,6 +87,7 @@ class BrandsController extends Controller
         $brand->phone = $request->phone;
         $brand->logo = $logo_name;
         $brand->instagram = $request->instagram;
+        $brand->link_learn_more = $request->link_learn_more;
         $brand->save();
 
         $photo_thumbnail = new ImageHeaderBrand();
@@ -143,7 +137,7 @@ class BrandsController extends Controller
 
             $logo = $request->file('logo');
 
-            $logo_name = time() . 'logo-' . $request->name  . '.' . $logo->getClientOriginalExtension();
+            $logo_name = sha1(time() . 'logo-' . $request->name)  . '.' . $logo->getClientOriginalExtension();
             Storage::putFileAs('public/uploads/logo/', $logo, $logo_name);
 
             $brand = Brands::findOrFail($request->id);

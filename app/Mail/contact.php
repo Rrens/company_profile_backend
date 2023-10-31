@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
@@ -11,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class contact extends Mailable
+class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,9 +25,8 @@ class contact extends Mailable
     {
         // return $this->from($this->email->email)
         //     ->subject($this->email->subject)
-        //     ->to('rendy@gmail.com')
+        //     ->to('admin-dev@dev.1010-group.com')
         //     ->view('email')
-        //     ->replyTo()
         //     ->with(
         //         [
         //             'name' => $this->email->name,
@@ -36,6 +34,7 @@ class contact extends Mailable
         //             'date' => $this->email->date
         //         ]
         //     );
+        
         $recipient_email = 'admin-dev@dev.1010-group.com';
 
         return $this->from($recipient_email)

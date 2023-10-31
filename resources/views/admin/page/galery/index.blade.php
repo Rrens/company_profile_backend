@@ -70,6 +70,34 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination pagination-primary">
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ $data->previousPageUrl() }}">Previous</a>
+                                        </li>
+                                        @php
+                                            $data_paginate = ceil($data->total() / $data->count());
+                                        @endphp
+                                        @if ($data->count() != $data->perPage())
+                                            @for ($i = 1; $i <= $data->currentPage(); $i++)
+                                                <li class="page-item {{ $i == $data->currentPage() ? 'active' : '' }}"><a
+                                                        class="page-link"
+                                                        href="{{ $data->url($i) }}">{{ $i }}</a>
+                                                </li>
+                                            @endfor
+                                        @else
+                                            @for ($i = 1; $i <= $data_paginate; $i++)
+                                                <li class="page-item {{ $i == $data->currentPage() ? 'active' : '' }}"><a
+                                                        class="page-link"
+                                                        href="{{ $data->url($i) }}">{{ $i }}</a>
+                                                </li>
+                                            @endfor
+                                        @endif
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ $data->nextPageUrl() }}">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -162,7 +190,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="basicInput">Image</label>
-                            <input type="file" class="form-control mt-3" id="basicInput" name="image"
+                            <input type="file" class="form-control mt-3" id="basicInput" name="images[]" multiple
                                 value="{{ old('image') }}">
                         </div>
                     </div>
@@ -180,13 +208,4 @@
             </div>
         </div>
     </div>
-
-
-
-
 @endsection
-
-@push('scripts')
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
-    <script src="{{ asset('admin/js/pages/ckeditor.js') }}"></script>
-@endpush

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('phone')->nullable();
             $table->string('instagram')->nullable();
+            $table->string('link_learn_more')->nullable();
             $table->text('address')->nullable();
             $table->string('open_outlet_day')->nullable();
             $table->string('close_outlet_day')->nullable();
