@@ -34,13 +34,13 @@ class Contact extends Mailable
         //             'date' => $this->email->date
         //         ]
         //     );
-        
+
         $recipient_email = 'admin-dev@dev.1010-group.com';
 
         return $this->from($recipient_email)
             ->subject($this->email->subject)
             ->view('email')
-            ->to('admin@1010-group.com')
+            ->to('info@1010-group.com')
             ->replyTo($this->email->email)
             ->with(
                 [

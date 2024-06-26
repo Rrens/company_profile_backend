@@ -173,102 +173,102 @@
         justify-content: center;
         align-items: center;
         padding: 0 30px;
-      }
+    }
 
 
-      .highlight-main .carousel-cell img {
+    .highlight-main .carousel-cell img {
         width: 100%;
         height: 50px;
         align-items: center;
         justify-content: center;
         object-fit: cover;
-      }
+    }
 
-      .highlight-thumbs .carousel-cell img {
+    .highlight-thumbs .carousel-cell img {
         width: 100px;
         height: 50px;
         object-fit: cover;
-      }
+    }
 
-      .carousel-control-prev-galeri,
-      .carousel-control-next-galeri {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 1;
-          margin-top: 230px;
-          margin-left: -85px;
-          margin-right: -85px;
-      }
-  
-      .carousel-control-prev-galeri {
-          left: 0;
-      }
-  
-      .carousel-control-next-galeri {
-          right: 0;
-      }
+    .carousel-control-prev-galeri,
+    .carousel-control-next-galeri {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        margin-top: 230px;
+        margin-left: -85px;
+        margin-right: -85px;
+    }
 
-      /* //TAMPILAN IMAGE NGISOR */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
-    gap: 0px;
-    overflow-x: hidden;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-}
+    .carousel-control-prev-galeri {
+        left: 0;
+    }
 
-.img-container {
-    position: relative;
-    border: #000000;
-    width: 140px;
-    height: 140px;
-    margin: 5px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-}
+    .carousel-control-next-galeri {
+        right: 0;
+    }
+
+    /* //TAMPILAN IMAGE NGISOR */
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
+        gap: 0px;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
+
+    .img-container {
+        position: relative;
+        border: #000000;
+        width: 140px;
+        height: 140px;
+        margin: 5px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+    }
 
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-.hover-conten {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 170px;
-    height: auto;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.6s;
-    filter: brightness(1);
-}
+    .hover-conten {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 170px;
+        height: auto;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s;
+        filter: brightness(1);
+    }
 
-.img-container:hover .card-conten {
-    filter: brightness(0.2);
-}
+    .img-container:hover .card-conten {
+        filter: brightness(0.2);
+    }
 
-.img-container:hover .hover-conten {
-    opacity: 1;
-}
+    .img-container:hover .hover-conten {
+        opacity: 1;
+    }
 
-.card-conten {
-    width: 140px;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.2s;
-    height: 140px;
-}
+    .card-conten {
+        width: 140px;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.2s;
+        height: 140px;
+    }
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
 }
 
@@ -281,7 +281,7 @@
         justify-content: center;
         align-items: center;
         padding: 0 10px;
-      }
+    }
 
     .highlight-main .carousel-cell img {
         width: 100%;
@@ -289,150 +289,169 @@
         align-items: center;
         justify-content: center;
         object-fit: cover;
-      }
+    }
 
-      .highlight-thumbs .carousel-cell img {
+    .highlight-thumbs .carousel-cell img {
         width: 100px;
         height: 50px;
         object-fit: cover;
-      }
+    }
 
-      .carousel-control-prev-galeri,
-      .carousel-control-next-galeri {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 1;
-          margin-top: 100px;
-          padding: 0px 10px;
-      }
-  
-      .carousel-control-prev-galeri {
-          left: 0;
-      }
-  
-      .carousel-control-next-galeri {
-          right: 0;
-      }
+    .carousel-control-prev-galeri,
+    .carousel-control-next-galeri {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        margin-top: 100px;
+        padding: 0px 10px;
+    }
 
-      /* TAMPILAN JEJER */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
-    gap: 0px;
-    overflow-x: hidden;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-}
+    .carousel-control-prev-galeri {
+        left: 0;
+    }
 
-.img-container {
-    position: relative;
-    border: #000000;
-    width: 140px;
-    height: 140px;
-    margin: 5px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-}
+    .carousel-control-next-galeri {
+        right: 0;
+    }
+
+    /* TAMPILAN JEJER */
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
+        gap: 0px;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
+
+    .img-container {
+        position: relative;
+        border: #000000;
+        width: 140px;
+        height: 140px;
+        margin: 5px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+    }
 
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-.hover-conten {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 170px;
-    height: auto;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.6s;
-    filter: brightness(1);
-}
+    .hover-conten {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 170px;
+        height: auto;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s;
+        filter: brightness(1);
+    }
 
-.img-container:hover .card-conten {
-    filter: brightness(0.2);
-}
+    .img-container:hover .card-conten {
+        filter: brightness(0.2);
+    }
 
-.img-container:hover .hover-conten {
-    opacity: 1;
-}
+    .img-container:hover .hover-conten {
+        opacity: 1;
+    }
 
-.card-conten {
-    width: 140px;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.2s;
-    height: 140px;
-}
+    .card-conten {
+        width: 140px;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.2s;
+        height: 140px;
+    }
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-      
+
 }
 
 /* hp mengah potrait */
 @media (max-width: 768px) {
-/* CONTACT */
-.container-contact {
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-    flex-direction: column-reverse;
-}
 
-.alamat .judul_alamat {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: -160px;
-    color: white;
-}
+    /* CONTACT */
+    .container-contact {
+        display: flex;
+        align-items: flex-start;
+        margin: 0;
+        width: 100%;
+        flex-direction: column-reverse;
+    }
 
-.alamat .tempat_alamat {
-    color: white;
-    text-align: left;
-    white-space: nowrap;
-    overflow-x: auto;
-    margin-bottom: 15px;
-}
+    .alamat .judul_alamat {
+        flex-direction: column;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        /* margin-left: -160px; */
+        color: white;
+    }
 
-.tempat_alamat p {
-    margin: 1px 0; 
-}
+    .alamat .tempat_alamat {
+        color: white;
+        text-align: left;
+        white-space: nowrap;
+        overflow-x: auto;
+        margin-bottom: 40px;
+    }
 
-.container-contact .contact-form {
-    margin-bottom: -10px;
-    width: 112.5%;
-    margin-left: -20px;
-}
+    .txt-contact {
+        color: white;
+        font-weight: normal;
+        font-family: 'Inter Medium', sans-serif;
+        float: left;
+        margin-left: 10px
+    }
 
-.container-contact .contact-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
+    #submit-button {
+        float: left;
+        margin-left: 30px
+    }
+
+    #career-button {
+        margin: 0 110px;
+    }
+
+    .tempat_alamat p {
+        margin: 1px 0;
+    }
+
+    .container-contact .contact-form {
+        margin-bottom: -10px;
+        width: 112.5%;
+        margin-left: -20px;
+    }
+
+    .container-contact .contact-form input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+    }
 
 
-.container-contact .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
+    .container-contact .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+    }
 
-.submit-contact {
-    margin-top: 20px;
-}
+    .submit-contact {
+        margin-top: 20px;
+    }
 
 
     .container-xxl {
@@ -446,13 +465,13 @@
         margin-top: -4rem !important;
         margin-bottom: -5rem !important
     }
-    
+
     .highlight-main {
         overflow: hidden;
         justify-content: center;
         align-items: center;
         padding: 0 0px;
-      }
+    }
 
     .highlight-main .carousel-cell img {
         width: 100%;
@@ -460,15 +479,15 @@
         align-items: center;
         justify-content: center;
         object-fit: cover;
-      }
+    }
 
-      .highlight-thumbs .carousel-cell img {
+    .highlight-thumbs .carousel-cell img {
         width: 100px;
         height: 50px;
         object-fit: cover;
-      }
+    }
 
-      .gallery-cell {
+    .gallery-cell {
         overflow: hidden;
         justify-content: center;
         align-items: center;
@@ -477,24 +496,24 @@
         height: 330px;
         margin-right: 2px;
         counter-increment: gallery-cell;
-      }
+    }
 
-      .gallery .gallery-cell img {
+    .gallery .gallery-cell img {
         width: 330px;
         height: 330px;
         align-items: center;
         justify-content: center;
         object-fit: cover;
         display: block;
-      }
+    }
 
-      .custom-carousel-ukuran {
+    .custom-carousel-ukuran {
         /* position: absolute; */
         width: 120%;
         left: -10%;
-      }
+    }
 
-      #myCarousel {
+    #myCarousel {
         width: auto;
         overflow: hidden;
     }
@@ -533,148 +552,168 @@
         right: 0;
     }
 
-          /* TAMPILAN JEJER */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(187px, 1fr));
-    gap: 1px;
-    overflow-x: hidden;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-}
+    /* TAMPILAN JEJER */
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(187px, 1fr));
+        gap: 1px;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
 
-.img-container {
-    position: relative;
-    border: #000000;
-    width: auto;
-    height: 140px;
-    margin: 0px;
-    padding: 0px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-}
+    .img-container {
+        position: relative;
+        border: #000000;
+        width: auto;
+        height: 140px;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+    }
 
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-.hover-conten {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 115px;
-    height: auto;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.6s;
-    filter: brightness(1);
-}
+    .hover-conten {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 115px;
+        height: auto;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s;
+        filter: brightness(1);
+    }
 
-.img-container:hover .card-conten {
-    filter: brightness(0.2);
-}
+    .img-container:hover .card-conten {
+        filter: brightness(0.2);
+    }
 
-.img-container:hover .hover-conten {
-    opacity: 1;
-}
+    .img-container:hover .hover-conten {
+        opacity: 1;
+    }
 
-.card-conten {
-    width: 187px;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.2s;
-    height: 140px;
-}
+    .card-conten {
+        width: 187px;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.2s;
+        height: 140px;
+    }
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-.logo-container {
-    position: relative;
-    border: #000000;
-    width: auto;
-    height: 140px;
-    margin-top: 15px;
-    margin-right: -35px;
-    margin-left: -35px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-    display: inline-block;
-}
+    .logo-container {
+        position: relative;
+        border: #000000;
+        width: auto;
+        height: 140px;
+        margin-top: 15px;
+        margin-right: -35px;
+        margin-left: -35px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+        display: inline-block;
+    }
 
-.logo-conten {
-    width: 150px;
-    height: auto;
-    max-height: 100%;
-    max-width: 45%;
-    object-fit: cover;
-    object-position: center;
-}
+    .logo-conten {
+        width: 150px;
+        height: auto;
+        max-height: 100%;
+        max-width: 45%;
+        object-fit: cover;
+        object-position: center;
+    }
 
 }
 
 /* tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
-/* CONTACT */
-.container-contact {
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-    flex-direction: column-reverse;
-}
 
-.alamat .judul_alamat {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: -125px;
-    color: white;
-}
+    /* CONTACT */
+    .container-contact {
+        display: flex;
+        align-items: flex-start;
+        margin: 0;
+        width: 100%;
+        flex-direction: column-reverse;
+    }
 
-.alamat .tempat_alamat {
-    color: white;
-    text-align: left;
-    white-space: nowrap;
-    overflow-x: auto;
-    margin-bottom: 15px;
-    margin-left: 30px;
-}
+    .alamat .judul_alamat {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        /* margin-left: -125px; */
+        color: white;
+    }
 
-.tempat_alamat p {
-    margin: 1px 0; 
-}
+    .alamat .tempat_alamat {
+        color: white;
+        text-align: left;
+        white-space: nowrap;
+        overflow-x: auto;
+        margin-bottom: 40px;
+        margin-left: 30px;
+    }
 
-.container-contact .contact-form {
-    margin-bottom: -10px;
-    width: 112.5%;
-    margin-left: -20px;
-}
+    .txt-contact {
+        color: white;
+        font-weight: normal;
+        font-family: 'Inter Medium', sans-serif;
+        float: left;
+        margin-left: 20px
+    }
 
-.container-contact .contact-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
+    #submit-button {
+        float: left;
+        margin-left: 40px
+    }
+
+    #career-button {
+        margin: 0 110px;
+    }
+
+    .tempat_alamat p {
+        margin: 1px 0;
+    }
+
+    .container-contact .contact-form {
+        margin-bottom: -10px;
+        width: 112.5%;
+        margin-left: -20px;
+    }
+
+    .container-contact .contact-form input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+    }
 
 
-.container-contact .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
+    .container-contact .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+    }
 
-.submit-contact {
-    margin-top: 20px;
-}
+    .submit-contact {
+        margin-top: 20px;
+
+    }
+
     .gallery-cell {
         overflow: hidden;
         justify-content: center;
@@ -684,22 +723,22 @@
         height: 500px;
         margin-right: 2px;
         counter-increment: gallery-cell;
-      }
+    }
 
-       .gallery .gallery-cell img {
+    .gallery .gallery-cell img {
         width: 400px;
         height: 400px;
         align-items: center;
         justify-content: center;
         object-fit: cover;
         display: block;
-      }
+    }
 
-      .custom-carousel-ukuran {
+    .custom-carousel-ukuran {
         /* position: absolute; */
         width: 120%;
         left: -10%;
-      }
+    }
 
 
 
@@ -708,7 +747,7 @@
         justify-content: center;
         align-items: center;
         padding: 0 85px;
-      }
+    }
 
     .highlight-main .carousel-cell img {
         width: 100%;
@@ -716,16 +755,16 @@
         align-items: center;
         justify-content: center;
         object-fit: cover;
-      }
+    }
 
-      .highlight-thumbs .carousel-cell img {
+    .highlight-thumbs .carousel-cell img {
         width: 100px;
         height: 50px;
         object-fit: cover;
-      }
+    }
 
 
-      #myCarousel {
+    #myCarousel {
         width: auto;
         overflow: hidden;
     }
@@ -765,150 +804,168 @@
         right: 0;
     }
 
-          /* TAMPILAN JEJER */
-          .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(187px, 1fr));
-            gap: 1px;
-            overflow-x: hidden;
-            justify-content: center;
-            align-items: center;
-            width: 100vw;
-        }
-        
-        .img-container {
-            position: relative;
-            border: #000000;
-            width: auto;
-            height: 140px;
-            margin: 0px;
-            padding: 0px;
-            overflow: hidden;
-            object-fit: cover;
-            object-position: center;
-        }
-        
-        
-        .img-container:hover .card-conten {
-            transform: scale(1.05);
-        }
-        
-        .hover-conten {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 115px;
-            height: auto;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.6s;
-            filter: brightness(1);
-        }
-        
-        .img-container:hover .card-conten {
-            filter: brightness(0.2);
-        }
-        
-        .img-container:hover .hover-conten {
-            opacity: 1;
-        }
-        
-        .card-conten {
-            width: 187px;
-            height: auto;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.2s;
-            height: 140px;
-        }
-        
-        .img-container:hover .card-conten {
-            transform: scale(1.05);
-        }
+    /* TAMPILAN JEJER */
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(187px, 1fr));
+        gap: 1px;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
+
+    .img-container {
+        position: relative;
+        border: #000000;
+        width: auto;
+        height: 140px;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+    }
 
 
-        .logo-container {
-            position: relative;
-            border: #000000;
-            width: auto;
-            height: 140px;
-            margin-top: 15px;
-            margin-right: -35px;
-            margin-left: -35px;
-            overflow: hidden;
-            object-fit: cover;
-            object-position: center;
-            display: inline-block;
-        }
-        
-        .logo-conten {
-            width: 160px;
-            height: auto;
-            max-height: 100%;
-            max-width: 45%;
-            object-fit: cover;
-            object-position: center;
-        }
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
+
+    .hover-conten {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 115px;
+        height: auto;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s;
+        filter: brightness(1);
+    }
+
+    .img-container:hover .card-conten {
+        filter: brightness(0.2);
+    }
+
+    .img-container:hover .hover-conten {
+        opacity: 1;
+    }
+
+    .card-conten {
+        width: 187px;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.2s;
+        height: 140px;
+    }
+
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
+
+
+    .logo-container {
+        position: relative;
+        border: #000000;
+        width: auto;
+        height: 140px;
+        margin-top: 15px;
+        margin-right: -35px;
+        margin-left: -35px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+        display: inline-block;
+    }
+
+    .logo-conten {
+        width: 160px;
+        height: auto;
+        max-height: 100%;
+        max-width: 45%;
+        object-fit: cover;
+        object-position: center;
+    }
 
 }
 
 
 /*tablet/layar lebarkecil */
 @media (min-width: 1025px) and (max-width: 1200px) {
-/* CONTACT */
-.container-contact {
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-    flex-direction: column-reverse;
-}
 
-.alamat .judul_alamat {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: -130px;
-    color: white;
-}
+    /* CONTACT */
+    .container-contact {
+        display: flex;
+        align-items: flex-start;
+        margin: 0;
+        width: 100%;
+        flex-direction: column-reverse;
+    }
 
-.alamat .tempat_alamat {
-    color: white;
-    text-align: left;
-    white-space: nowrap;
-    overflow-x: auto;
-    margin-bottom: 15px;
-    margin-left: 30px;
-}
+    .alamat .judul_alamat {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        /* margin-left: -130px; */
+        color: white;
+    }
 
-.tempat_alamat p {
-    margin: 1px 0; 
-}
+    .alamat .tempat_alamat {
+        color: white;
+        text-align: left;
+        white-space: nowrap;
+        overflow-x: auto;
+        margin-bottom: 40px;
+        margin-left: 30px;
+    }
 
-.container-contact .contact-form {
-    margin-bottom: -10px;
-    width: 112.5%;
-    margin-left: -20px;
-}
+    .txt-contact {
+        color: white;
+        font-weight: normal;
+        font-family: 'Inter Medium', sans-serif;
+        float: left;
+        margin-left: 20px
+    }
 
-.container-contact .contact-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
+    #submit-button {
+        float: left;
+        margin-left: 43px
+    }
+
+    #career-button {
+        margin: 0 136px 0 93px;
+    }
+
+    .tempat_alamat p {
+        margin: 1px 0;
+    }
+
+    .container-contact .contact-form {
+        margin-bottom: -10px;
+        width: 112.5%;
+        margin-left: -20px;
+    }
+
+    .container-contact .contact-form input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+    }
 
 
-.container-contact .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
+    .container-contact .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+    }
 
-.submit-contact {
-    margin-top: 20px;
-}
+    .submit-contact {
+        margin-top: 20px;
+    }
 
     .gallery-cell {
         overflow: hidden;
@@ -919,29 +976,29 @@
         height: 500px;
         margin-right: 2px;
         counter-increment: gallery-cell;
-      }
+    }
 
-      .gallery .gallery-cell img {
+    .gallery .gallery-cell img {
         width: 500px;
         height: 500px;
         align-items: center;
         justify-content: center;
         object-fit: cover;
         display: block;
-      }
+    }
 
-      .custom-carousel-ukuran {
+    .custom-carousel-ukuran {
         /* position: absolute; */
         width: 120%;
         left: -10%;
-      }
+    }
 
     .highlight-main {
         overflow: hidden;
         justify-content: center;
         align-items: center;
         padding: 0 190px;
-      }
+    }
 
     .highlight-main .carousel-cell img {
         width: 100%;
@@ -949,15 +1006,15 @@
         align-items: center;
         justify-content: center;
         object-fit: cover;
-      }
+    }
 
-      .highlight-thumbs .carousel-cell img {
+    .highlight-thumbs .carousel-cell img {
         width: 100px;
         height: 50px;
         object-fit: cover;
-      }
+    }
 
-      #myCarousel {
+    #myCarousel {
         width: auto;
         overflow: hidden;
     }
@@ -997,91 +1054,91 @@
         right: 0;
     }
 
-              /* TAMPILAN JEJER */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
-    gap: 0px;
-    overflow-x: hidden;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-}
+    /* TAMPILAN JEJER */
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
+        gap: 0px;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
 
-.img-container {
-    position: relative;
-    border: #000000;
-    width: 190px;
-    height: 190px;
-    margin: 5px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-}
+    .img-container {
+        position: relative;
+        border: #000000;
+        width: 190px;
+        height: 190px;
+        margin: 5px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+    }
 
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-.hover-conten {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 130px;
-    height: auto;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.6s;
-    filter: brightness(1);
-}
+    .hover-conten {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 130px;
+        height: auto;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s;
+        filter: brightness(1);
+    }
 
-.img-container:hover .card-conten {
-    filter: brightness(0.2);
-}
+    .img-container:hover .card-conten {
+        filter: brightness(0.2);
+    }
 
-.img-container:hover .hover-conten {
-    opacity: 1;
-}
+    .img-container:hover .hover-conten {
+        opacity: 1;
+    }
 
-.card-conten {
-    width: 190px;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.2s;
-    height: 190px;
-}
+    .card-conten {
+        width: 190px;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.2s;
+        height: 190px;
+    }
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-.logo-container {
-    position: relative;
-    border: #000000;
-    width: 240px;
-    height: 240px;
-    margin-top: 15px;
-    margin-right: -40px;
-    margin-left: -40px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-    display: inline-block;
-}
+    .logo-container {
+        position: relative;
+        border: #000000;
+        width: 240px;
+        height: 240px;
+        margin-top: 15px;
+        margin-right: -40px;
+        margin-left: -40px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+        display: inline-block;
+    }
 
-.logo-conten {
-    width: auto;
-    height: auto;
-    max-height: 100%;
-    max-width: 45%;
-    object-fit: cover;
-    object-position: center;
-    margin: 0px;
-    padding: 0px;
-}
+    .logo-conten {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 45%;
+        object-fit: cover;
+        object-position: center;
+        margin: 0px;
+        padding: 0px;
+    }
 
 }
 
@@ -1094,7 +1151,7 @@
         justify-content: center;
         align-items: center;
         padding: 0px 150px;
-      }
+    }
 
     .highlight-main .carousel-cell img {
         width: 100px;
@@ -1105,16 +1162,16 @@
         display: block;
         margin-left: -100px;
         margin-right: -100px;
-      }
+    }
 
     .highlight-thumbs .carousel-cell img {
         width: 150px;
         height: 110px;
         object-fit: cover;
-      }
+    }
 
 
-      .gallery-cell {
+    .gallery-cell {
         overflow: hidden;
         justify-content: center;
         align-items: center;
@@ -1123,68 +1180,102 @@
         height: 500px;
         margin-right: 2px;
         counter-increment: gallery-cell;
-      }
+    }
 
-      .gallery .gallery-cell img {
+    .gallery .gallery-cell img {
         width: 500px;
         height: 500px;
         align-items: center;
         justify-content: center;
         object-fit: cover;
         display: block;
-      }
+    }
 
-      .custom-carousel-ukuran {
+    .custom-carousel-ukuran {
         /* position: absolute; */
         width: 120%;
         left: -10%;
-      }
-      .flickity-prev-next-button {
+    }
+
+    .flickity-prev-next-button {
         background: transparent;
-      }
-      
-      .flickity-prev-next-button:hover {
+    }
+
+    .flickity-prev-next-button:hover {
         color: #000;
-      }
+    }
 
-/* CONTACT */
-.container-contact {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; 
-    margin: 0px 50px;
-}
+    /* CONTACT */
+    .container-contact {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin: 0px 50px;
+    }
 
-.alamat .judul_alamat {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    margin-left: -160px;
-    color: white;
-}
+    .alamat .judul_alamat {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        /* margin-left: -160px; */
+        color: white;
+        margin-left: 200px;
+    }
 
-.alamat .tempat_alamat {
-    color: white;
-    text-align: left;
-    white-space: nowrap;
-    overflow-x: auto;
-}
+    .txt-contact {
+        color: white;
+        font-weight: normal;
+        font-family: 'Inter Medium', sans-serif;
+        float: left;
+        margin-left: 20px
+    }
 
-.tempat_alamat p {
-    margin: 1px 0; 
-}
+    #submit-button {
+        float: left;
+        margin-left: 35px
+    }
 
-.container-contact {
-    width: 80%;
-}
+    #career-button {
+        margin: 0 110px;
+    }
 
-.container-contact .contact-form {
-    margin-bottom: -10px;
-}
+    .alamat .tempat_alamat {
+        color: white;
+        text-align: left;
+        white-space: nowrap;
+        overflow-x: auto;
+        margin-bottom: 300px;
+        margin-left: 200px;
+    }
 
-.submit-contact {
-    margin-top: 20px;
-}
+    .txt-contact {
+        color: white;
+        font-weight: normal;
+        font-family: 'Inter Medium', sans-serif;
+        float: left;
+        margin-left: 30px
+    }
+
+    .submit-contact {
+        /* margin-bottom: 325px !important; */
+        margin-top: 20px;
+    }
+
+    .tempat_alamat p {
+        margin: 1px 0;
+    }
+
+    .container-contact {
+        width: 95%;
+    }
+
+    .container-contact .contact-form {
+        margin-bottom: -10px;
+    }
+
+    /* .submit-contact {
+        margin-top: 20px;
+    } */
 
     #myCarousel {
         width: auto;
@@ -1229,98 +1320,98 @@
 
 
     /* TAMPILAN JEJER */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
-    gap: 0px;
-    overflow-x: hidden;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-}
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
+        gap: 0px;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
 
-.img-container {
-    position: relative;
-    border: #000000;
-    width: 240px;
-    height: 240px;
-    /* margin: 5px; */
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-}
+    .img-container {
+        position: relative;
+        border: #000000;
+        width: 240px;
+        height: 240px;
+        /* margin: 5px; */
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+    }
 
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-.hover-conten {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 170px;
-    height: auto;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.6s;
-    filter: brightness(1);
-}
+    .hover-conten {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 170px;
+        height: auto;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s;
+        filter: brightness(1);
+    }
 
-.img-container:hover .card-conten {
-    filter: brightness(0.2);
-}
+    .img-container:hover .card-conten {
+        filter: brightness(0.2);
+    }
 
-.img-container:hover .hover-conten {
-    opacity: 1;
-}
+    .img-container:hover .hover-conten {
+        opacity: 1;
+    }
 
-.card-conten {
-    width: 240px;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.2s;
-    height: 240px;
-    /* display: block; */
-}
+    .card-conten {
+        width: 240px;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.2s;
+        height: 240px;
+        /* display: block; */
+    }
 
-.img-container:hover .card-conten {
-    transform: scale(1.05);
-}
+    .img-container:hover .card-conten {
+        transform: scale(1.05);
+    }
 
-.logo-container {
-    position: relative;
-    border: #000000;
-    width: 240px;
-    height: 240px;
-    margin-top: 15px;
-    margin-right: -40px;
-    margin-left: -40px;
-    overflow: hidden;
-    object-fit: cover;
-    object-position: center;
-    display: inline-block;
-}
+    .logo-container {
+        position: relative;
+        border: #000000;
+        width: 240px;
+        height: 240px;
+        margin-top: 15px;
+        margin-right: -40px;
+        margin-left: -40px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+        display: inline-block;
+    }
 
-.logo-conten {
-    width: auto;
-    height: auto;
-    max-height: 100%;
-    max-width: 45%;
-    object-fit: cover;
-    object-position: center;
-    margin: 0px;
-    padding: 0px;
-}
+    .logo-conten {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 45%;
+        object-fit: cover;
+        object-position: center;
+        margin: 0px;
+        padding: 0px;
+    }
 
-.container-xxl {
-    width: 100%;
-    max-width: 1000%;
-    margin-left: auto;
-    margin-right: auto;
-}
+    .container-xxl {
+        width: 100%;
+        max-width: 1000%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
 }
 
@@ -1335,7 +1426,8 @@ section.brand_gallery {
 section.brand_gallery .brand-gallery-btn {
     position: absolute;
     top: 0;
-    width: 60px; /* Ubah lebar tombol galeri jika perlu */
+    width: 60px;
+    /* Ubah lebar tombol galeri jika perlu */
     height: 100%;
     z-index: 30;
     cursor: pointer;
@@ -1359,7 +1451,8 @@ section.brand_gallery .brand-gallery-btn:after {
 
 section.brand_gallery .brand-gallery-btn .nav_arrow {
     z-index: 2;
-    fill: white; /* Ubah warna panah sesuai kebutuhan Anda */
+    fill: white;
+    /* Ubah warna panah sesuai kebutuhan Anda */
 }
 
 /* Tambahkan gaya lain sesuai kebutuhan Anda */
@@ -1374,7 +1467,8 @@ section.brand_gallery .brand_gallery_wrapper {
 
 section.brand_gallery .brand_gallery_wrapper .slider_each {
     flex: 0 0 auto;
-    width: 100%; /* Setiap elemen slider akan menempati lebar 100% */
+    width: 100%;
+    /* Setiap elemen slider akan menempati lebar 100% */
     scroll-snap-align: start;
     position: relative;
 }
@@ -1387,227 +1481,199 @@ section.brand_gallery .brand_gallery_wrapper .slider_each img {
 }
 
 section.brand_gallery .brand_gallery_wrapper .slider_each:hover img {
-    opacity: 0.8; /* Ubah opacity saat mengarahkan kursor sesuai kebutuhan Anda */
+    opacity: 0.8;
+    /* Ubah opacity saat mengarahkan kursor sesuai kebutuhan Anda */
 }
 
 /* Tambahan CSS sesuai kebutuhan Anda */
 section.top_bottom_border {
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
-   }
+}
 
-section.brand_gallery
- > .brand_gallery_btn {
- position: absolute;
- top: 0;
- width: 120px;
- height: 100%;
- z-index: 30;
- cursor: pointer;
- background: transparent;
+section.brand_gallery>.brand_gallery_btn {
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 30;
+    cursor: pointer;
+    background: transparent;
 }
-section.brand_gallery
- > .brand_gallery_btn:after {
- content: '';
- display: block;
- position: absolute;
- box-sizing: border-box;
- width: 100%;
- height: 100%;
- top: 0;
- left: 0;
- pointer-events: none;
- opacity: 0;
- transition: opacity 0.5s;
- z-index: 1;
+
+section.brand_gallery>.brand_gallery_btn:after {
+    content: '';
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1;
 }
-section.brand_gallery
- > .brand_gallery_btn
- > .nav_arrow {
- z-index: 2;
+
+section.brand_gallery>.brand_gallery_btn>.nav_arrow {
+    z-index: 2;
 }
-section.brand_gallery
- > .brand_gallery_btn.left {
- left: 0;
- right: auto;
+
+section.brand_gallery>.brand_gallery_btn.left {
+    left: 0;
+    right: auto;
 }
-section.brand_gallery
- > .brand_gallery_btn.left
- > .nav_arrow {
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
+
+section.brand_gallery>.brand_gallery_btn.left>.nav_arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-section.brand_gallery
- > .brand_gallery_btn.left:after {
- background: linear-gradient(
-  90deg,
-  hsla(0, 0%, 100%, 0.5) 0,
-  hsla(0, 0%, 100%, 0)
- );
- filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#00ffffff",GradientType=1);
+
+section.brand_gallery>.brand_gallery_btn.left:after {
+    background: linear-gradient(90deg,
+            hsla(0, 0%, 100%, 0.5) 0,
+            hsla(0, 0%, 100%, 0));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#00ffffff", GradientType=1);
 }
-section.brand_gallery
- > .brand_gallery_btn.right {
- left: auto;
- right: 0;
+
+section.brand_gallery>.brand_gallery_btn.right {
+    left: auto;
+    right: 0;
 }
-section.brand_gallery
- > .brand_gallery_btn.right
- > .nav_arrow {
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%)
-  rotate(180deg);
+
+section.brand_gallery>.brand_gallery_btn.right>.nav_arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
 }
-section.brand_gallery
- > .brand_gallery_btn.right:after {
- background: linear-gradient(
-  90deg,
-  hsla(0, 0%, 100%, 0) 0,
-  hsla(0, 0%, 100%, 0.5)
- );
- filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffffff",endColorstr="#ffffff",GradientType=1);
+
+section.brand_gallery>.brand_gallery_btn.right:after {
+    background: linear-gradient(90deg,
+            hsla(0, 0%, 100%, 0) 0,
+            hsla(0, 0%, 100%, 0.5));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffffff", endColorstr="#ffffff", GradientType=1);
 }
-body.onhover
- section.brand_gallery
- > .brand_gallery_btn:hover:after {
- opacity: 1;
+
+body.onhover section.brand_gallery>.brand_gallery_btn:hover:after {
+    opacity: 1;
 }
+
 @media only screen and (max-width: 1024px) {
- section.brand_gallery
-  > .brand_gallery_btn {
-  width: 90px;
- }
+    section.brand_gallery>.brand_gallery_btn {
+        width: 90px;
+    }
 }
+
 @media only screen and (max-width: 650px) {
- section.brand_gallery
-  > .brand_gallery_btn {
-  opacity: 0 !important;
-  width: 60px;
- }
+    section.brand_gallery>.brand_gallery_btn {
+        opacity: 0 !important;
+        width: 60px;
+    }
 }
-section.brand_gallery
- .brand_gallery_wrapper {
- width: 100%;
- height: 500px;
+
+section.brand_gallery .brand_gallery_wrapper {
+    width: 100%;
+    height: 500px;
 }
-section.brand_gallery
- .brand_gallery_wrapper
- .slider_each {
- width: auto;
- height: 500px;
- cursor: pointer;
- border-left: 2px solid #000;
- position: relative;
+
+section.brand_gallery .brand_gallery_wrapper .slider_each {
+    width: auto;
+    height: 500px;
+    cursor: pointer;
+    border-left: 2px solid #000;
+    position: relative;
 }
-section.brand_gallery
- .brand_gallery_wrapper
- .slider_each
- > img {
- width: auto;
- height: 100%;
- -o-object-fit: cover;
- object-fit: cover;
- position: relative;
- z-index: 2;
+
+section.brand_gallery .brand_gallery_wrapper .slider_each>img {
+    width: auto;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
 }
-body.onhover
- section.brand_gallery
- .brand_gallery_wrapper
- .slider_each
- > img:hover {
- opacity: 0.6;
+
+body.onhover section.brand_gallery .brand_gallery_wrapper .slider_each>img:hover {
+    opacity: 0.6;
 }
-section.brand_gallery
- .brand_gallery_wrapper
- .slider_each:before {
- content: '';
- display: block;
- position: absolute;
- box-sizing: border-box;
- width: 100%;
- height: 100%;
- top: 0;
- left: 0;
- pointer-events: none;
- z-index: -1;
- background: #000;
- opacity: 1;
+
+section.brand_gallery .brand_gallery_wrapper .slider_each:before {
+    content: '';
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: #000;
+    opacity: 1;
 }
+
 @media only screen and (max-width: 650px) {
- section.brand_gallery
-  .brand_gallery_wrapper {
-  width: 100%;
-  height: auto;
- }
- section.brand_gallery
-  .brand_gallery_wrapper
-  .slick-track {
-  display: flex;
-  -moz-flex-direction: row;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  -moz-justify-content: flex-start;
-  -ms-justify-content: flex-start;
-  justify-content: flex-start;
-  -ms-flex-pack: flex-start;
-  -ms-align-content: stretch;
-  align-content: stretch;
-  -moz-align-items: stretch;
-  -ms-align-items: stretch;
-  align-items: stretch;
- }
- section.brand_gallery
-  .brand_gallery_wrapper
-  .slick-track
-  .slick-slide {
-  position: relative;
-  height: auto;
- }
- section.brand_gallery
-  .brand_gallery_wrapper
-  .slick-track
-  .slick-slide,
- section.brand_gallery
-  .brand_gallery_wrapper
-  .slick-track
-  .slick-slide
-  > div {
-  display: flex;
-  -moz-flex-direction: row;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
-  -ms-align-content: stretch;
-  align-content: stretch;
-  -moz-align-items: stretch;
-  -ms-align-items: stretch;
-  align-items: stretch;
- }
- section.brand_gallery
-  .brand_gallery_wrapper
-  .slider_each {
-  width: 100vw !important;
-  display: block !important;
-  height: auto;
-  cursor: pointer;
- }
- section.brand_gallery
-  .brand_gallery_wrapper
-  .slider_each
-  > img {
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
- }
+    section.brand_gallery .brand_gallery_wrapper {
+        width: 100%;
+        height: auto;
+    }
+
+    section.brand_gallery .brand_gallery_wrapper .slick-track {
+        display: flex;
+        -moz-flex-direction: row;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        -moz-justify-content: flex-start;
+        -ms-justify-content: flex-start;
+        justify-content: flex-start;
+        -ms-flex-pack: flex-start;
+        -ms-align-content: stretch;
+        align-content: stretch;
+        -moz-align-items: stretch;
+        -ms-align-items: stretch;
+        align-items: stretch;
+    }
+
+    section.brand_gallery .brand_gallery_wrapper .slick-track .slick-slide {
+        position: relative;
+        height: auto;
+    }
+
+    section.brand_gallery .brand_gallery_wrapper .slick-track .slick-slide,
+    section.brand_gallery .brand_gallery_wrapper .slick-track .slick-slide>div {
+        display: flex;
+        -moz-flex-direction: row;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        -moz-justify-content: center;
+        -ms-justify-content: center;
+        justify-content: center;
+        -ms-flex-pack: center;
+        -ms-align-content: stretch;
+        align-content: stretch;
+        -moz-align-items: stretch;
+        -ms-align-items: stretch;
+        align-items: stretch;
+    }
+
+    section.brand_gallery .brand_gallery_wrapper .slider_each {
+        width: 100vw !important;
+        display: block !important;
+        height: auto;
+        cursor: pointer;
+    }
+
+    section.brand_gallery .brand_gallery_wrapper .slider_each>img {
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
 }
 
 /* CAROUSEL SETUP */
@@ -1615,53 +1681,59 @@ section.brand_gallery
 /* Main Carousel */
 .highlight-main .carousel-cell,
 .highlight-main .carousel-cell img {
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
 }
-.highlight-main .carousel-cell + .carousel-cell {
-  margin-left: 10px;
+
+.highlight-main .carousel-cell+.carousel-cell {
+    margin-left: 10px;
 }
 
 /* Thumbs */
 .highlight-thumbs .carousel-cell {
-  margin-top: 10px;
-  margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-.highlight-thumbs .carousel-cell + .carousel-cell {
-  margin-left: 10px;
+
+.highlight-thumbs .carousel-cell+.carousel-cell {
+    margin-left: 10px;
 }
+
 .highlight-thumbs .carousel-cell img {
-  display: block;
-  opacity: 0.5;
+    display: block;
+    opacity: 0.5;
 }
+
 .highlight-thumbs .carousel-cell.is-nav-selected img {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Thumbs Scrollbar */
 .highlight-thumbs .carousel-scrollbar {
-  position: absolute;
-  background-color: #f5f5f5;
-  top: 100%;
-  left: 0;
-  right: 0;
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
+    position: absolute;
+    background-color: #f5f5f5;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
 }
+
 .highlight-thumbs .carousel-scrollbar.is-hidden {
-  display: none;
+    display: none;
 }
+
 .highlight-thumbs .carousel-scrollbar-inner {
-  position: absolute;
-  background-color: #ccc;
-  width: 50%;
-  min-width: 10%;
-  max-width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  cursor: e-resize;
-  will-change: left;
+    position: absolute;
+    background-color: #ccc;
+    width: 50%;
+    min-width: 10%;
+    max-width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    cursor: e-resize;
+    will-change: left;
 }
 
 
