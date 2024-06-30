@@ -76,7 +76,9 @@
                                             <a class="page-link" href="{{ $data->previousPageUrl() }}">Previous</a>
                                         </li>
                                         @php
-                                            $data_paginate = ceil($data->total() / $data->count());
+                                            $totalCount = $data->total();
+                                            $countPerPage = $data->count();
+                                            $data_paginate = $countPerPage > 0 ? ceil($totalCount / $countPerPage) : 0;
                                         @endphp
                                         @if ($data->count() != $data->perPage())
                                             @for ($i = 1; $i <= $data->currentPage(); $i++)

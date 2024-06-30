@@ -17,7 +17,13 @@ class GaleryController extends Controller
     {
         $active = 'galery';
         $brand = Brands::select('name', 'id', 'logo')->where('name', '!=', 'GALERY')->get();
-        $image = ImageGaleryBrand::where('id_brand', Brands::where('name', 'GALERY')->first()['id'])->get();
+        // $image = null;
+        // $check_image = ImageGaleryBrand::where('id_brand', Brands::where('name', 'GALERY')->first()['id'])->get();
+        $image = ImageGaleryBrand::whereHas('brands', function ($query) {
+            $query->where('name', 'GALERY');
+        })->get();
+        // dd($image);
+
         return view('page.galeries.index', compact('active', 'brand', 'image'));
     }
 
@@ -28,6 +34,7 @@ class GaleryController extends Controller
             ->orderBy('created_at')
             ->get();
         $data = ImageGaleryBrand::with('brands')->paginate(5);
+        // dd($data);
         return view('admin.page.galery.index', compact('data', 'brand', 'active'));
     }
 
